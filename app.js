@@ -1,7 +1,7 @@
 const express = require('express');
 const app = express();
 require('dotenv').config()
-
+// 주석추가
 app.set('port', process.env.PORT || 3000);
 
 app.get('/', (req, res) => {
