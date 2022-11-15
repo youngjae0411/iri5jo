@@ -1,13 +1,20 @@
+require('dotenv').config()
+
 const express = require('express');
 const app = express();
-require('dotenv').config()
-// 주석추가
+const mongoose = require('mongoose')
+
+
+mongoose.connect(process.env.URL)
+  .then(() => console.log('MongoDB Connected'))
+  .catch(err => console.log(err))
+
+
 app.set('port', process.env.PORT || 3000);
 
-app.get('/', (req, res) => {
-    res.send('Hello, Express')
-})
+app.use('/home', require('./routes/index'))
 
 app.listen(app.get('port'), () => {
     console.log(app.get('port'), '번 포트에서 대기 중')
 })
+
