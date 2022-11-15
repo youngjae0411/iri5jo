@@ -6,9 +6,9 @@ const saltRounds = 10;
 
 //토큰 생성을 위해 사용
 const jwt = require('jsonwebtoken');
-const { route } = require("../routes/register");
 
 const userSchema = mongoose.Schema({
+
   name: {
     type: String,
     maxlaength: 50,
@@ -26,6 +26,12 @@ const userSchema = mongoose.Schema({
     type: String
   }
 });
+
+
+
+
+
+
 //====================================
 //
 //           비밀번호 암호화
@@ -97,7 +103,7 @@ userSchema.methods.generateToken = function(cb) {
     user.token = token
     user.save(function(err, user){
         if(err) return cb(err);
-        cd(null, user)
+        cb(null, user)
     })
 }
 
@@ -118,8 +124,8 @@ userSchema.statics.fineByToken = function(token, cb) {
 }
 
 
+const User = mongoose.model('User', userSchema);
+
+module.exports = { User }
 
 
-const User = mongoose.model("User", userSchema);
-
-module.exports = { User };

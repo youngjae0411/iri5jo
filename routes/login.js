@@ -1,15 +1,12 @@
 const express = require('express');
 const router = express.Router();
-const app = express()
-const port = 5000
-const bodyParser = require('body-parser');
-const cookieParser = require('cookie-parser');
 const { auth } = require('../middleware/auth');
-const { User } = require("../models/User");
+const User   = require("../models/User");
 
 router.post('/login', (req, res) => {
     //요청된 이메일을 데이터베이스에서 있는지 찾는다.
-    User.findOne({email: req.body.email}, (err, user) => {
+
+    User.findOne({id: req.body.id}, (err, user) => {
       if(!user) {
         return res.json({
           loginSuccess: false,
@@ -39,25 +36,21 @@ router.post('/login', (req, res) => {
       _id: req.user._id,
       isAdmin: req.user.role === 0 ? false : true,
       isAuth: true,
-      email: req.user.email,
+      id: req.user.id,
       name: req.user.name,
-      lastname: req.user.lastname,
-      role: req.secure.role,
-      image: req.user.image
     })
   })
 
-  router.get('/logout', auth, (req, res) => {
-    console.log('req.user', req.user)
-    User.findOneAndUpdate({_id: req.user._id},
-      { token: "" }
-      , (err, user) => {
-        if (err) return res.json({success: false, err});
+  router.get("/logout", auth, (req, res) => {
+
+    User.findOneAndUpdate({ _id: req.user._id }, { token: "", tokenExp: "" }, (err, doc) => {
+        if (err) return res.json({ success: false, err });
         return res.status(200).send({
-          success: true
-        })
-      })
-  })
+            success: true
+        });
+    });
+});
+
 
   router.get('/auth', auth, (req, res) => {
     res.status(200).json({

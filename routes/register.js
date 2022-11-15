@@ -4,13 +4,13 @@ const router = express.Router();
 var path = require('path');
 
 // 회원가입 시 필요한 유저스키마를 가져옴
-const { User } = require("../models/User");
+const User = require("../models/User");
 
 //토큰 인증을 위하여 사용
 
 /* 페이지에 띄우는 것 */
 router.get('/register', (req, res) => {
-    res.sendFile(path.resolve('public/register.html'))
+    res.sendFile(path.resolve('public/test.html'))
 })
 
 
@@ -43,6 +43,5 @@ router.post('/register', (req, res) => {
 //       서버와 클라이언트 사이 연결
 //
 //====================================
-
 
   module.exports = router;
