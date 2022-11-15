@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Home</title>
+
+    <script>
+      function onclick() {
+        
+      }
+    </script>
+  </head>
+  <body>
+    <h1><a href="/home">LOGO</a></h1>
+    <h2>게시판 글쓰기</h2>
+    <form method="post" action="/home/saveReview">
+        <ul>
+            <li>
+                제목: <input type="text" name="title">
+            </li>
+            <li>
+                별점: <input type="text" name="star">
+            </li>
+            <li>
+                내용: <input type="text" name="content">
+            </li>
+        </ul>
+        <input type="submit" value="작성하기">
+    </form>
+    
+</body>
+</html>
