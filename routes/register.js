@@ -10,7 +10,7 @@ const User = require("../models/User");
 
 /* 페이지에 띄우는 것 */
 router.get('/register', (req, res) => {
-    res.sendFile(path.resolve('public/test.html'))
+    res.sendFile(path.resolve('public/register.html'))
 })
 
 
