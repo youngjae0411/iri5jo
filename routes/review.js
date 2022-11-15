@@ -1,16 +1,17 @@
 const express = require('express');
 const router = express.Router();
 var path = require('path');
-const http = require('http');
-
-
-
 
 const { Review } = require("../models/Review");
 
 /* GET home page. */
-router.get('/', (req, res) => {
-  res.sendFile(path.resolve('public/index.html'))
+router.get('/Review', (req, res) => {
+
+  Review.find((err, doc) => {
+
+    if(err) return res.status(400).send({ success : false, err : err})
+    else return res.status(200).send(doc)
+  })
 })
 
 //리뷰 디비에 저장
