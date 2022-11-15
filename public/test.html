@@ -107,19 +107,10 @@
                         let done = rows[i].star
                         let num = rows[i].content
 
-                        let temp_html = ``
+                        let temp_html = `<li>${rows[i].title}</li>
+                                         <li>${rows[i].star}</li>
+                                         <li>${rows[i].content}</li>`
 
-                        if(done == 0) {
-                                temp_html = `<li>
-                                            <h2>✅ ${Todo}</h2>
-                                            <button onclick="done_bucket(${num})" type="button" class="btn btn-outline-primary">완료!</button>
-                                        </li>`} else if(done == 1){
-                            temp_html = `<li>
-                                             <h2 class="done">✅ ${Todo}</h2>
-                                             <button onclick="not_bucket(${num})" type="button" class="btn btn-outline-danger">취소</button>
-                                             </li>`
-
-                        }
                             $("#bucket-list").append(temp_html)
                     }
 
@@ -145,7 +136,7 @@
 </head>
 <body>
 <div class="mypic">
-    <h1>나의 버킷리스트</h1>
+    <h1>세상에 나쁜 게임은 없다</h1>
 </div>
 <div class="mybox">
     <div class="mybucket">

@@ -20,6 +20,7 @@ mongoose.connect(process.env.URL)
 
 app.set('port', process.env.PORT || 3000);
 
+app.use('/login', require('./routes/login'))
 app.use('/home', require('./routes/review'))
 app.use('/register', require('./routes/register'))
 
