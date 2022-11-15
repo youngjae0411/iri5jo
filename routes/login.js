@@ -7,7 +7,7 @@ const cookieParser = require('cookie-parser');
 const { auth } = require('../middleware/auth');
 const { User } = require("../models/User");
 
-router.post('/api/users/login', (req, res) => {
+router.post('/login', (req, res) => {
     //요청된 이메일을 데이터베이스에서 있는지 찾는다.
     User.findOne({email: req.body.email}, (err, user) => {
       if(!user) {
@@ -33,7 +33,7 @@ router.post('/api/users/login', (req, res) => {
     })
   })
 
-  router.get('/api/users/auth', auth, (req, res) => {
+  router.get('/users/auth', auth, (req, res) => {
     //여기까지 미들웨어를 통과해 왔다는 얘기는 authentication이 true라는 말
     res.status(200).json({
       _id: req.user._id,
@@ -47,7 +47,7 @@ router.post('/api/users/login', (req, res) => {
     })
   })
 
-  router.get('/api/users/logout', auth, (req, res) => {
+  router.get('/logout', auth, (req, res) => {
     console.log('req.user', req.user)
     User.findOneAndUpdate({_id: req.user._id},
       { token: "" }
@@ -59,5 +59,11 @@ router.post('/api/users/login', (req, res) => {
       })
   })
 
-
+  router.get('/auth', auth, (req, res) => {
+    res.status(200).json({
+        _id: req.user._id,
+        isAuth: true,
+        name: req.user.name
+    })
+})
 module.exports = router;

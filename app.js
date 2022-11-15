@@ -20,9 +20,9 @@ mongoose.connect(process.env.URL)
 
 app.set('port', process.env.PORT || 3000);
 
-app.use('/login', require('./routes/login'))
-app.use('/home', require('./routes/review'))
-app.use('/register', require('./routes/register'))
+app.use('/api', require('./routes/login'))
+app.use('/api', require('./routes/review'))
+app.use('/api', require('./routes/register'))
 
 app.listen(app.get('port'), () => {
     console.log(app.get('port'), '번 포트에서 대기 중')

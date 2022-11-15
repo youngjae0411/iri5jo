@@ -7,10 +7,9 @@ var path = require('path');
 const { User } = require("../models/User");
 
 //토큰 인증을 위하여 사용
-const { auth } = require('../middleware/auth')
 
 /* 페이지에 띄우는 것 */
-router.get('/', (req, res) => {
+router.get('/register', (req, res) => {
     res.sendFile(path.resolve('public/register.html'))
 })
 
@@ -22,7 +21,7 @@ router.get('/', (req, res) => {
 //
 //==================================
 // 회원가입 라우터 만들기
-router.post('/', (req, res) => {
+router.post('/register', (req, res) => {
     console.log(req.body)
   
     // 회원가입 할 때 필요한 정보들을 client에서 가져오면 그것들을 데이터 베이스에 넣어준다
@@ -44,12 +43,6 @@ router.post('/', (req, res) => {
 //       서버와 클라이언트 사이 연결
 //
 //====================================
-router.get('/auth', auth, (req, res) => {
-    res.status(200).json({
-        _id: req.user._id,
-        isAuth: true,
-        name: req.user.name
-    })
-})
+
 
   module.exports = router;
