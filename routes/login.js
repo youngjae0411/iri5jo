@@ -34,16 +34,15 @@ router.post('/login', (req, res) => {
     //여기까지 미들웨어를 통과해 왔다는 얘기는 authentication이 true라는 말
     res.status(200).json({
       _id: req.user._id,
-      isAdmin: req.user.role === 0 ? false : true,
       isAuth: true,
       id: req.user.id,
       name: req.user.name,
     })
   })
 
-  router.get("/logout", auth, (req, res) => {
+  router.get("/logout", auth , (req, res) => {
 
-    User.findOneAndUpdate({ _id: req.user._id }, { token: "", tokenExp: "" }, (err, doc) => {
+    User.findOneAndUpdate({ _id: req.user._id }, { token: ""}, (err, doc) => {
         if (err) return res.json({ success: false, err });
         return res.status(200).send({
             success: true

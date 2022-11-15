@@ -23,7 +23,7 @@ router.post("/saveReview", (req, res) => {
     console.log(err)
     console.log(doc)
     if(err) return res.status(400).send(err)
-    else res.redirect('/home')
+    else res.status(200).send(doc)
   })
 })
 
