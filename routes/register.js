@@ -45,13 +45,11 @@ router.post('/', (req, res) => {
 //
 //====================================
 router.get('/auth', auth, (req, res) => {
-
     res.status(200).json({
         _id: req.user._id,
         isAuth: true,
         name: req.user.name
     })
-
 })
-  
+
   module.exports = router;
