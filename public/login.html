@@ -21,7 +21,7 @@
             src: url(../font/neodgm_code.woff);
         }
 
-        .registerModal {
+        .loginModal {
             font-family: "neo";
         }
 
@@ -45,7 +45,7 @@
             display: block;
         }
 
-        .modal_body {
+        .loginmodal_body {
 
             font-family: "neo";
 
@@ -98,8 +98,8 @@
             height: 25px;
         }
 
-        .registerButton {
-            
+        .loginButton {
+
             text-align: center;
 
         }
@@ -108,18 +108,28 @@
             display: none;
         }
     </style>
+    <!-- 로그인 페이지 진입 시 쿠키값이 비어있지 않다면 로그인버튼을 숨기고 로그아웃버튼을 보인다. -->
     <script>
-
+        $(document).ready(function () {
+            if (document.cookie !== "") {
+                $('#loginbtn').hide()
+                $('#logoutbtn').show()
+            }
+        })
+    </script>
+    <!-- 로그인 로그아웃 ajax -->
+    <script>
         function log_In() {
-            let id = $('#id-input').val()
-            let password = $('#password-input').val()
-
+            // 인풋값을 저장
+            let loginid = $('#id-input').val()
+            let loginpassword = $('#password-input').val()
+            
             $.ajax({
                 type: 'POST',
                 url: 'http://localhost:5500/api/login',
                 data: {
-                    id: id,
-                    password: password
+                    id: loginid,
+                    password: loginpassword
                 },
                 success: function (response) {
                     if (response['loginSuccess'] === true) {
@@ -130,9 +140,9 @@
                             $('#logoutbtn').show()
                             $('#modalres').hide()
                         }
-                    } else if(response['loginSuccess'] === false ) {
+                    } else if (response['loginSuccess'] === false) {
                         alert(response['loginmsg'])
-                    } else if(response['passwordSuccess'] === false) {
+                    } else if (response['passwordSuccess'] === false) {
                         alert(response['passmsg'])
                         $('#password-input').val('')
                     }
@@ -156,20 +166,16 @@
                 }
             })
         }
-
         function logcancle() {
             window.location.reload()
         }
-
     </script>
-
-
 </head>
 
 <body>
-    <div class="registerModal">
-        <div  id="modalres" class="modal">
-            <div class="modal_body">
+    <div class="loginModal">
+        <div id="modalres" class="modal">
+            <div class="loginmodal_body">
                 <div class="loginTitle">
                     <br />
                     <h6>세상에 나쁜 게임은 없다! </h6>
@@ -195,63 +201,50 @@
                 <br />
                 <br />
                 <br />
-                <div class="registerButton">
+                <div class="loginButton">
                     <button id="login" onclick="log_In()" type="button" class="btn btn-outline-success"> 로그인하기 </button>
                     <button onclick="logcancle()" type="button" class="btn btn-outline-secondary" data-bs-dismiss="modal"> 그만두기 </button>
                 </div>
             </div>
-
         </div>
         <button id="loginbtn" class="btn-open-popup">로그인</button>
         <button onclick="log_out()" class="logoutbtn" id="logoutbtn"> 로그아웃 </button>
-
     </div>
-
 </body>
 
 <script>
-
     //
-    const registerClose = document.querySelector('.btn-outline-secondary')
-
-    const body = document.querySelector('body');
-    const modal = document.querySelector('.modal');
-    const btnOpenPopup = document.querySelector('.btn-open-popup');
-
-
+    const loginClose = document.querySelector('.btn-outline-secondary')
+    const loginbody = document.querySelector('body');
+    const loginmodal = document.querySelector('.modal');
+    const loginbtnOpenPopup = document.querySelector('.btn-open-popup');
     // 
-    btnOpenPopup.addEventListener('click', () => {
-        modal.classList.toggle('show');
+    loginbtnOpenPopup.addEventListener('click', () => {
+        loginmodal.classList.toggle('show');
 
-        if (modal.classList.contains('show')) {
-            body.style.overflow = 'hidden';
+        if (loginmodal.classList.contains('show')) {
+            loginbody.style.overflow = 'hidden';
         }
     });
-
     //
-    modal.addEventListener('click', (event) => {
-        if (event.target === modal) {
-            modal.classList.toggle('show');
+    loginmodal.addEventListener('click', (event) => {
+        if (event.target === loginmodal) {
+            loginmodal.classList.toggle('show');
 
-            if (!modal.classList.contains('show')) {
-                body.style.overflow = 'auto';
+            if (!loginmodal.classList.contains('show')) {
+                loginbody.style.overflow = 'auto';
             }
         }
     });
-
     //
-    registerClose.addEventListener("click", (event) => {
-        if (event.target === registerClose) {
-            modal.classList.toggle('show');
-
-            if (!modal.classList.contains('show')) {
-                body.style.overflow = 'auto';
+    loginClose.addEventListener("click", (event) => {
+        if (event.target === loginClose) {
+            loginmodal.classList.toggle('show');
+            if (!loginmodal.classList.contains('show')) {
+                loginbody.style.overflow = 'auto';
             }
         }
     });
-
-
-
 </script>
 
 
