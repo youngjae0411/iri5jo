@@ -60,7 +60,7 @@
 
             text-align: left;
 
-            background-color: rgb(255, 255, 255);
+            background-color: black;
             border-radius: 25px;
             box-shadow: 0 2px 3px 0 rgba(34, 36, 38, 0.15);
 
@@ -83,6 +83,7 @@
         .form-label {
 
             font-family: "neo";
+            color: lightgray;
 
             width: 250px;
         }
@@ -90,6 +91,8 @@
         .form-control {
 
             font-family: "neo";
+
+            background-color: black;
 
             width: 280px;
             height: 25px;
@@ -100,36 +103,12 @@
             text-align: center;
 
         }
-    </style>
-    <script>
 
-        function signIn() {
-            let name = $('#name').val()
-            let id = $('#id').val()
-            let Password = $('#password').val()
-
-            $.ajax({
-                type: 'POST',
-                url: 'http://localhost:5000/api/register',
-                data: {
-                    name: name,
-                    id: id,
-                    password: Password
-                },
-                success: function (response) {
-                    console.log(response)
-                    if (response['success'] === true) {
-                        alert('회원가입이 완료되었습니다.')
-                        window.location.reload()
-                     } else {
-                         alert(response['msg'])
-                     }
-                }
-            });
+        .id {
+            width: 20px;
+            height: 25px;
         }
-
-    </script>
-
+    </style>
 
 </head>
 
@@ -147,19 +126,22 @@
                 </div>
                 <br />
                 <div class="mb-3">
-                    <label for="formGroupExampleInput" class="text-start">Name</label>
+                    <label for="formGroupExampleInput" class="form-label">  Name ദ്ദിᐢ._.ᐢ₎</label>
+                    
                     <br />
                     <input id="name" type="text" class="form-control" id="formGroupExampleInput"
                         placeholder="별명을 입력하여 주세요.">
                 </div>
-                <div class="mb-3">
-                    <label for="formGroupExampleInput" class="text-start">ID</label>
+                <div class="mb-7">
+                    <label for="formGroupExampleInput" class="form-label"> ID ๛ก( ’-’* ก)</label>
                     <br />
-                    <input id="id" type="text" class="form-control" id="formGroupExampleInput"
-                        placeholder="아이디를 입력하여 주세요.">
+                    <input id="id" type="text" class="form-control" id="formGroupExampleInput" name="username"
+                        check_result="fail" placeholder="아이디를 입력하여 주세요." required>
+                    <button type="button" class="id_overlap_button" onclick="id_overlap_check()"> ㅁ </button>
+                    <img id="id_check_sucess" style="display: none;">
                 </div>
                 <div class="mb-3">
-                    <label class="form-label">Password</label>
+                    <label class="form-label">  Password ( •̀ ω •́ )+</label>
                     <br />
                     <input id="password" type="password" class="form-control" id="formGroupExampleInput2"
                         placeholder="5자리 이상의 문자 혹은 숫자를 입력하여주세요.">
@@ -203,12 +185,48 @@
         }
     });
 
-    registerClose.addEventListener("click", () => {
-        modal.style.display = 'none';
+    registerClose.addEventListener("click", (event) => {
+        if (event.target === registerClose) {
+            modal.classList.toggle('show');
+
+            if (!modal.classList.contains('show')) {
+                body.style.overflow = 'auto';
+            }
+        }
     });
 
 
 
+
+    function signIn() {
+        let name = $('#name').val()
+        let id = $('#id').val()
+        let Password = $('#password').val()
+
+        $.ajax({
+            type: 'POST',
+            url: 'http://localhost:5000/api/register',
+            data: {
+                name: name,
+                id: id,
+                password: Password
+            },
+            success: function (response) {
+                console.log(response)
+                if (response['success'] === true) {
+                    alert('회원가입이 완료되었습니다.'),
+                        modal.classList.toggle('show');
+                    if (!modal.classList.contains('show')) {
+                        body.style.overflow = 'auto';
+                    }
+                    window.location.reload()
+                } else {
+                    alert(response['msg'])
+                }
+            }
+        });
+    }
+   
 </script>
 
 
