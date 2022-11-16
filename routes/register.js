@@ -7,11 +7,6 @@ var path = require('path');
 // 회원가입 시 필요한 유저스키마를 가져옴
 const User = require("../models/User");
 
-/* 페이지에 띄우는 것 */
-router.get('/register', (req, res) => {
-    res.sendFile(path.resolve('public/register.html'))
-})
-
 
 //==================================
 //

@@ -168,101 +168,133 @@
         }
 
            
-    
+    /* 김혜란 스타일 */
+        .Modal {
 
+            position: absolute;
+            top: 0;
+            left: 0;
+
+            width: 100%;
+            height: 100%;
+
+            display: none;
+
+            background-color: rgba(0, 0, 0, 0.4);
+        }
+
+        .modal.show {
+            display: block;
+        }
+
+        .modal_body {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+
+            width: 430px;
+            height: 630px;
+
+            padding: 40px 70px 40px 70px;
+
+            text-align: left;
+
+            background-color: black;
+            border-radius: 25px;
+            box-shadow: 0 2px 3px 0 rgba(34, 36, 38, 0.15);
+
+            transform: translateX(-50%) translateY(-50%);
+        }
+
+        .registerTitle {
+            color: lightgrey;
+
+            width: 285px;
+            height: 240px;
+
+            text-align: center;
+            background-image: url('https://media3.giphy.com/media/gYWeVOiMmbg3kzCTq5/giphy.gif?cid=ecf05e47x1fxrjqkip25knc3wma75v33m4m9yy3xfkb8kdnr&rid=giphy.gif&ct=g');
+            background-size: 280px;
+        }
+
+        .form-label {
+            color: lightgray;
+
+            width: 250px;
+        }
+
+        .form-control {
+            color: gray;
+
+            background-color: black;
+
+            width: 280px;
+            height: 25px;
+        }
+
+        .registerButton {
+            text-align: center;
+        }
+        .msgdiv {
+            font-size: 0.8rem;
+        }
+    /* 김혜란 스타일 */
 
 
 
     </style> 
 
-    <script>
-
-
-        //페이지 로드시 바로 전시 리스트 보여주기 
-        $(document).ready(function () {
-            listing();
-        });
-
-
-        function listing() {
-
-            $.ajax({
-                type: 'GET',
-                url: 'http://localhost:5500/api/Review',
-                data: {},
-                success: function (response) {
-
-                    console.log(response)
-
-                    let review = response
-
-                    for (let i = 0; i < response.length; i++) {
-
-                        let title = review[i]['title']
-                        let star = review[i]['star']
-                        let content = review[i]['content']
-
-
-                        let star_image = '⭐'.repeat(star)
-
-
-
-
-
-
-                        let temp_html = `<div class="card">
-                                            <div class="card-body">
-                                            <h5 class="card-title">${title}</h5>
-                                            <p> ${star_image}</p>
-                                            <p class="mycomment">${content}</p>
-                                            </div>
-                                            </div>`
-
-                        $('#cards-box').append(temp_html)
-
-                    }
-
-                }
-            })
-        }
-
-
-
-        function posting() {
-            let title = $('#title').val()
-            let star = $('#star').val()
-            let content = $('#content').val()
-
-            $.ajax({
-                type: 'POST',
-                url: 'http://localhost:5000/api/saveReview',
-                data: { title: title, star: star, content: content },
-                success: function (response) {
-                    alert(response['msg'])
-                    window.location.reload()
-                }
-            });
-
-        }
-
-        function open_box() {
-            $('#post-box').show()
-        }
-        function close_box() {
-            $('#post-box').hide()
-        }
-
-    </script>
 </head>
 
 
 <body>
-
+    <!-- 김혜란 바디 -->
+    <div class="registerModalBox">
+        <div class="modal" id="registerModal">
+            <div class="modal_body">
+                <div class="registerTitle">
+                    <br />
+                    <h6>세상에 나쁜 게임은 없다!</h6>
+                    <h1>회원가입</h1>
+                    <br /><br /><br /><br />
+                    <h6>세나게에 오신 것을 환영합니다</h6>
+                </div>
+                <br />
+                <div class="mb-3">
+                    <label for="formGroupExampleInput" class="form-label"> Name ദ്ദിᐢ._.ᐢ₎</label>
+                    <br />
+                    <input id="registerName" type="text" class="form-control" id="formGroupExampleInput"
+                        placeholder="별명을 입력하여 주세요.">
+                    <div id="registerName_div" class="msgdiv"></div>
+                </div>
+                <div class="mb-7">
+                    <label for="formGroupExampleInput" class="form-label"> ID ๛ก( ’-’* ก)</label>
+                    <br />
+                    <input id="registerId" type="text" class="form-control" id="formGroupExampleInput" name="username"
+                        check_result="fail" placeholder="아이디를 입력하여 주세요." required>
+                    <div id="registerId_div" class="msgdiv"></div>
+                </div>
+                <div class="mb-3">
+                    <label class="form-label"> Password ( •̀ ω •́ )+</label>
+                    <br />
+                    <input id="registerPw" type="password" class="form-control" id="formGroupExampleInput2"
+                        placeholder="비밀번호를 입력하여주세요.">
+                    <div id="registerPw_div" class="msgdiv"></div>
+                </div>
+                <br />
+                <div class="registerButton">
+                    <button onclick="signIn()" type="button" class="btn btn-outline-success"> 가입하기 </button>
+                    <button type="button" id="registerClose" class="btn btn-outline-secondary" data-bs-dismiss="registerModal"> 그만두기 </button>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- 김혜란 바디 -->
     <div class="logbtn">
-
         <button onclick="iogin_box()" type="button" class="btn btn-light">로그인</button>
-        <button onclick="signup_box()" type="button" class="btn btn-dark">회원가입</button>
-
+        <!-- 김혜란 회원가입버튼 -->
+        <button class="register-btn-open-popup">회원가입</button> 
+        <!-- 김혜란 회원가입버튼 -->
     </div>
 
 
@@ -292,5 +324,243 @@
     </div>
 
 </body>
+
+
+<script>
+
+    //=== 김혜란 스크립트 시작 ================================================================
+
+    const registerModalBox = document.querySelector('registerModalBox');
+    const registerModal = document.querySelector('#registerModal');
+    const registerBtnOpenPopup = document.querySelector('.register-btn-open-popup');
+    const registerClose = document.querySelector('#registerClose')
+    // 모달 창 띄우기    
+    registerBtnOpenPopup.addEventListener('click', () => {
+        registerModal.classList.toggle('show');
+
+        if (registerModal.classList.contains('show')) {
+            registerModalBox.style.overflow = 'hidden';
+        }
+    });
+    // 모달 창 밖을 누르면 꺼지게 만들기!
+    registerModal.addEventListener('click', (event) => {
+        if (event.target === registerModal) {
+            registerModal.classList.toggle('show');
+
+            if (!registerModal.classList.contains('show')) {
+                registerModalBox.style.overflow = 'auto';
+            }
+        }
+    });
+    // 그만두기 키 누르면 꺼지기
+    registerClose.addEventListener("click", (event) => {
+        if (event.target === registerClose) {
+            registerModal.classList.toggle('show');
+
+            if (!registerModal.classList.contains('show')) {
+                registerModalBox.style.overflow = 'auto';
+            }
+        }
+    });
+    // 회원가입 서버로 정보 보내기!
+    function signIn() {
+        let registerName = $('#registerName').val()
+        let registerId = $('#registerId').val()
+        let registerPw = $('#registerPw').val()
+
+
+        //회원가입 시키는 함수
+        $.ajax({
+            type: 'POST',
+            url: 'http://localhost:5000/api/register',
+            data: {
+                name: registerName,
+                id: registerId,
+                password: registerPw
+            },
+            success: function (response) {
+                console.log(response)
+                if (response['success'] === true) {
+                    alert('회원가입이 완료되었습니다.'),
+                    registerModal.classList.toggle('show');
+                    window.location.reload()
+                } else {
+                    alert(response['msg'])
+                }
+            }
+        });
+        // 회원가입 함수는 요기까지!
+    }
+    // ID 정보 검사 후 경고 문구
+    $(document).ready(function () {
+
+        $("#registerId").on("focusout", function () {
+            var registerId = $('input[id=registerId]').val();
+
+            // 빈 값 체크
+            if (registerId == '' || registerId.length == 0) {
+                $('#registerId_div').html('<a style="color:red;" > 아이디를 입력해주세요. </a>');
+                return false;
+            }
+
+            $.ajax({
+                url: "http://localhost:5000/api/register/confirm/Id",
+                type: "POST",
+                data: { id: registerId },
+                success: function (response) {
+                    console.log(response)
+
+                    if (response.id == false) {
+                        $('#registerId_div').html('<a style="color:gray;" > 사용 가능한 아이디 입니다. </a>')
+                    } else {
+                        $('#registerId_div').html('<a style="color:red;" > 사용 불가능한 아이디 입니다. </a>')
+                    }
+                }
+            })
+
+                .fail(function (xhr, status, errorThrown) {
+                    console.log("Ajax 실패 : " + errorThrown);
+                    $('#registerId_div').html('<a style="color:red;" > 통신 중 오류가 발생하였습니다. </a>')
+                })
+        })
+    })
+    // Name 정보 검사 후 경고 문구
+    $(document).ready(function () {
+
+        $("#registerName").on("focusout", function () {
+            var registerName = $('input[id=registerName]').val();
+
+            // 빈 값 체크
+            if (registerName == '' || registerName.length == 0) {
+                $('#registerName_div').html('<a style="color:red;" >닉네임을 입력해주세요. </a>')
+                return false;
+            }
+
+
+            $.ajax({
+                url: "http://localhost:5000/api/register/confirm/Name",
+                type: "POST",
+                data: { name: registerName },
+                success: function (response) {
+                    if (response.name == false) {
+                        $('#registerName_div').html('<a style="color:gray;" > 사용 가능한 닉네임 입니다. </a>')
+                    } else {
+                        $('#registerName_div').html('<a style="color:red;" > 사용 불가능한 닉네임 입니다. </a>')
+                    }
+                }
+            })
+
+                .fail(function (xhr, status, errorThrown) {
+                    console.log("Ajax 실패 : " + errorThrown);
+                    $('#registerName_div').html('<a style="color:red;" > 통신 중 오류가 발생하였습니다. </a>')
+                })
+        })
+    })
+    // Password 정보 검사 후 경고 문구
+    $(document).ready(function () {
+
+        $("#registerPw").on("focusout", function () {
+            var registerPw = $('input[id=registerPw]').val();
+
+            // 빈 값 체크
+            if (registerPw == '' || registerPw.length == 0) {
+                $('#registerPw_div').html('<a style="color:red;" >비밀번호를 입력해주세요. </a>')
+                return false;
+            }
+
+            // 길이 체크
+            if (registerPw.length < 5) {
+                $('#registerPw_div').html('<a style="color:red;" > 5자 이상 입력해주세요. </a>')
+                return false;
+            }
+
+            // 완료
+            if (registerPw.length > 4) {
+                $('#registerPw_div').html('<a style="color:gray;" > 사용가능 한 패스워드입니다. </a>')
+                return false;
+            }
+        })
+    })
+
+    //=== 김혜란 스크립트 끝 ================================================================
+
+
+
+
+    //페이지 로드시 바로 전시 리스트 보여주기 
+    $(document).ready(function () {
+        listing();
+    });
+
+
+    function listing() {
+
+        $.ajax({
+            type: 'GET',
+            url: 'http://localhost:5500/api/Review',
+            data: {},
+            success: function (response) {
+
+                console.log(response)
+
+                let review = response
+
+                for (let i = 0; i < response.length; i++) {
+
+                    let title = review[i]['title']
+                    let star = review[i]['star']
+                    let content = review[i]['content']
+
+
+                    let star_image = '⭐'.repeat(star)
+
+
+
+
+
+
+                    let temp_html = `<div class="card">
+                                        <div class="card-body">
+                                        <h5 class="card-title">${title}</h5>
+                                        <p> ${star_image}</p>
+                                        <p class="mycomment">${content}</p>
+                                        </div>
+                                        </div>`
+
+                    $('#cards-box').append(temp_html)
+
+                }
+
+            }
+        })
+    }
+
+
+
+    function posting() {
+        let title = $('#title').val()
+        let star = $('#star').val()
+        let content = $('#content').val()
+
+        $.ajax({
+            type: 'POST',
+            url: 'http://localhost:5000/api/saveReview',
+            data: { title: title, star: star, content: content },
+            success: function (response) {
+                alert(response['msg'])
+                window.location.reload()
+            }
+        });
+
+    }
+
+    function open_box() {
+        $('#post-box').show()
+    }
+    function close_box() {
+        $('#post-box').hide()
+    }
+
+</script>
 
 </html>

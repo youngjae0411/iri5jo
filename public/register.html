@@ -2,11 +2,6 @@
 <html lang="en">
 
 <head>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.0.0/jquery.min.js"></script>
-
-    <!-- jQuery Modal -->
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-modal/0.9.1/jquery.modal.min.js"></script>
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/jquery-modal/0.9.1/jquery.modal.min.css" />
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -22,17 +17,17 @@
     <title>Register</title>
     <style>
         @font-face {
-            font-family: "neo";
-            src: url(../font/neodgm_code.woff);
+            font-family: "NeoDunggeunmo";
+            src: url(../font/NeoDunggeunmodgm_code.woff);
         }
 
-        .registerModal {
-            font-family: "neo";
+        .registerModalBox {
+            font-family: "NeoDunggeunmo";
         }
 
-        .modal {
+        .Modal {
 
-            font-family: "neo";
+            font-family: "NeoDunggeunmo";
 
             position: absolute;
             top: 0;
@@ -52,7 +47,7 @@
 
         .modal_body {
 
-            font-family: "neo";
+            font-family: "NeoDunggeunmo";
 
             position: absolute;
             top: 50%;
@@ -74,7 +69,7 @@
 
         .registerTitle {
 
-            font-family: "neo";
+            font-family: "NeoDunggeunmo";
             color: lightgrey;
 
             width: 285px;
@@ -87,7 +82,7 @@
 
         .form-label {
 
-            font-family: "neo";
+            font-family: "NeoDunggeunmo";
             color: lightgray;
 
             width: 250px;
@@ -95,7 +90,7 @@
 
         .form-control {
 
-            font-family: "neo";
+            font-family: "NeoDunggeunmo";
             color: gray;
 
             background-color: black;
@@ -123,9 +118,9 @@
 </head>
 
 <body>
-
-    <div class="registerModal">
-        <div class="modal">
+    
+    <div class="registerModalBox">
+        <div class="modal" id="registerModal">
             <div class="modal_body">
                 <div class="registerTitle">
                     <br />
@@ -138,66 +133,64 @@
                 <div class="mb-3">
                     <label for="formGroupExampleInput" class="form-label"> Name ദ്ദിᐢ._.ᐢ₎</label>
                     <br />
-                    <input id="name" type="text" class="form-control" id="formGroupExampleInput"
+                    <input id="registerName" type="text" class="form-control" id="formGroupExampleInput"
                         placeholder="별명을 입력하여 주세요.">
-                    <div id="name_div" class="msgdiv"></div>
+                    <div id="registerName_div" class="msgdiv"></div>
                 </div>
                 <div class="mb-7">
                     <label for="formGroupExampleInput" class="form-label"> ID ๛ก( ’-’* ก)</label>
                     <br />
-                    <input id="id" type="text" class="form-control" id="formGroupExampleInput" name="username"
+                    <input id="registerId" type="text" class="form-control" id="formGroupExampleInput" name="username"
                         check_result="fail" placeholder="아이디를 입력하여 주세요." required>
-                    <div id="id_div" class="msgdiv"></div>
+                    <div id="registerId_div" class="msgdiv"></div>
                 </div>
                 <div class="mb-3">
                     <label class="form-label"> Password ( •̀ ω •́ )+</label>
                     <br />
-                    <input id="password" type="password" class="form-control" id="formGroupExampleInput2"
+                    <input id="registerPw" type="password" class="form-control" id="formGroupExampleInput2"
                         placeholder="비밀번호를 입력하여주세요.">
-                    <div id="pw_div" class="msgdiv"></div>
+                    <div id="registerPw_div" class="msgdiv"></div>
                 </div>
                 <br />
                 <div class="registerButton">
                     <button onclick="signIn()" type="button" class="btn btn-outline-success"> 가입하기 </button>
-                    <button type="button" class="btn btn-outline-secondary" data-bs-dismiss="modal"> 그만두기 </button>
+                    <button type="button" id="registerClose" class="btn btn-outline-secondary" data-bs-dismiss="registerModal"> 그만두기 </button>
                 </div>
             </div>
-
         </div>
-        <button class="btn-open-popup">회원가입</button>
-
+        <button class="register-btn-open-popup">회원가입</button>
     </div>
 
 </body>
 
 <script>
 
-    const body = document.querySelector('body');
-    const modal = document.querySelector('.modal');
-    const btnOpenPopup = document.querySelector('.btn-open-popup');
-    const registerClose = document.querySelector('.btn-outline-secondary')
+    const registerModalBox = document.querySelector('registerModalBox');
+    const registerModal = document.querySelector('#registerModal');
+    const registerBtnOpenPopup = document.querySelector('.register-btn-open-popup');
+    const registerClose = document.querySelector('#registerClose')
 
 
     //================================
     // 모달 창 띄우기
     //================================    
-    btnOpenPopup.addEventListener('click', () => {
-        modal.classList.toggle('show');
+    registerBtnOpenPopup.addEventListener('click', () => {
+        registerModal.classList.toggle('show');
 
-        if (modal.classList.contains('show')) {
-            body.style.overflow = 'hidden';
+        if (registerModal.classList.contains('show')) {
+            registerModalBox.style.overflow = 'hidden';
         }
     });
 
     //================================
     // 모달 창 밖을 누르면 꺼지게 만들기!
     //================================
-    modal.addEventListener('click', (event) => {
-        if (event.target === modal) {
-            modal.classList.toggle('show');
+    registerModal.addEventListener('click', (event) => {
+        if (event.target === registerModal) {
+            registerModal.classList.toggle('show');
 
-            if (!modal.classList.contains('show')) {
-                body.style.overflow = 'auto';
+            if (!registerModal.classList.contains('show')) {
+                registerModalBox.style.overflow = 'auto';
             }
         }
     });
@@ -207,10 +200,10 @@
     //================================
     registerClose.addEventListener("click", (event) => {
         if (event.target === registerClose) {
-            modal.classList.toggle('show');
+            registerModal.classList.toggle('show');
 
-            if (!modal.classList.contains('show')) {
-                body.style.overflow = 'auto';
+            if (!registerModal.classList.contains('show')) {
+                registerModalBox.style.overflow = 'auto';
             }
         }
     });
@@ -219,28 +212,28 @@
     // 회원가입 서버로 정보 보내기!
     //================================
     function signIn() {
-        let name = $('#name').val()
-        let id = $('#id').val()
-        let Password = $('#password').val()
+        let registerName = $('#registerName').val()
+        let registerId = $('#registerId').val()
+        let registerPw = $('#registerPw').val()
 
         //================================
         //회원가입 시키는 함수
         //================================
         $.ajax({
             type: 'POST',
-            url: 'http://localhost:5500/api/register',
+            url: 'http://localhost:5000/api/register',
             data: {
-                name: name,
-                id: id,
-                password: Password
+                name: registerName,
+                id: registerId,
+                password: registerPw
             },
             success: function (response) {
                 console.log(response)
                 if (response['success'] === true) {
                     alert('회원가입이 완료되었습니다.'),
-                        modal.classList.toggle('show');
-                    if (!modal.classList.contains('show')) {
-                        body.style.overflow = 'auto';
+                    registerModal.classList.toggle('show');
+                    if (!registerModal.classList.contains('show')) {
+                        registerModalBox.style.overflow = 'auto';
                     }
                     window.location.reload()
                 } else {
@@ -251,9 +244,6 @@
         //================================
         // 회원가입 함수는 요기까지!
         //================================
-
-
-
     }
 
     //================================
@@ -261,33 +251,33 @@
     //================================
     $(document).ready(function () {
 
-        $("#id").on("focusout", function () {
-            var id = $('input[id=id]').val();
+        $("#registerId").on("focusout", function () {
+            var registerId = $('input[id=registerId]').val();
 
             // 빈 값 체크
-            if (id == '' || id.length == 0) {
-                $('#id_div').html('<a style="color:red;" > 아이디를 입력해주세요. </a>');
+            if (registerId == '' || registerId.length == 0) {
+                $('#registerId_div').html('<a style="color:red;" > 아이디를 입력해주세요. </a>');
                 return false;
             }
 
             $.ajax({
-                url: "http://localhost:5500/api/register/confirm/id",
+                url: "http://localhost:5000/api/register/confirm/Id",
                 type: "POST",
-                data: { id: id },
+                data: { id: registerId },
                 success: function (response) {
                     console.log(response)
 
-                    if (response.id == false) {
-                        $('#id_div').html('<a style="color:gray;" > 사용 가능한 아이디 입니다. </a>')
+                    if (response.registerId == false) {
+                        $('#registerId_div').html('<a style="color:gray;" > 사용 가능한 아이디 입니다. </a>')
                     } else {
-                        $('#id_div').html('<a style="color:red;" > 사용 불가능한 아이디 입니다. </a>')
+                        $('#registerId_div').html('<a style="color:red;" > 사용 불가능한 아이디 입니다. </a>')
                     }
                 }
             })
 
                 .fail(function (xhr, status, errorThrown) {
                     console.log("Ajax 실패 : " + errorThrown);
-                    $('#id_div').html('<a style="color:red;" > 통신 중 오류가 발생하였습니다. </a>')
+                    $('#registerId_div').html('<a style="color:red;" > 통신 중 오류가 발생하였습니다. </a>')
                 })
         })
     })
@@ -297,34 +287,32 @@
     //================================
     $(document).ready(function () {
 
-        $("#name").on("focusout", function () {
-            var name = $('input[id=name]').val();
+        $("#registerName").on("focusout", function () {
+            var registerName = $('input[id=registerName]').val();
 
             // 빈 값 체크
-            if (name == '' || name.length == 0) {
-                $('#name_div').html('<a style="color:red;" >닉네임을 입력해주세요. </a>')
+            if (registerName == '' || registerName.length == 0) {
+                $('#registerName_div').html('<a style="color:red;" >닉네임을 입력해주세요. </a>')
                 return false;
             }
 
 
             $.ajax({
-                url: "http://localhost:5500/api/register/confirm/name",
+                url: "http://localhost:5000/api/register/confirm/Name",
                 type: "POST",
-                data: { name: name },
+                data: { name: registerName },
                 success: function (response) {
-                    console.log(response)
-
                     if (response.name == false) {
-                        $('#name_div').html('<a style="color:gray;" > 사용 가능한 닉네임 입니다. </a>')
+                        $('#registerName_div').html('<a style="color:gray;" > 사용 가능한 닉네임 입니다. </a>')
                     } else {
-                        $('#name_div').html('<a style="color:red;" > 사용 불가능한 닉네임 입니다. </a>')
+                        $('#registerName_div').html('<a style="color:red;" > 사용 불가능한 닉네임 입니다. </a>')
                     }
                 }
             })
 
                 .fail(function (xhr, status, errorThrown) {
                     console.log("Ajax 실패 : " + errorThrown);
-                    $('#name_div').html('<a style="color:red;" > 통신 중 오류가 발생하였습니다. </a>')
+                    $('#registerName_div').html('<a style="color:red;" > 통신 중 오류가 발생하였습니다. </a>')
                 })
         })
     })
@@ -334,24 +322,24 @@
     //================================
     $(document).ready(function () {
 
-        $("#password").on("focusout", function () {
-            var password = $('input[id=password]').val();
+        $("#registerPw").on("focusout", function () {
+            var registerPw = $('input[id=registerPw]').val();
 
             // 빈 값 체크
-            if (password == '' || password.length == 0) {
-                $('#pw_div').html('<a style="color:red;" >비밀번호를 입력해주세요. </a>')
+            if (registerPw == '' || registerPw.length == 0) {
+                $('#registerPw_div').html('<a style="color:red;" >비밀번호를 입력해주세요. </a>')
                 return false;
             }
 
             // 길이 체크
-            if (password.length < 5) {
-                $('#pw_div').html('<a style="color:red;" > 5자 이상 입력해주세요. </a>')
+            if (registerPw.length < 5) {
+                $('#registerPw_div').html('<a style="color:red;" > 5자 이상 입력해주세요. </a>')
                 return false;
             }
 
             // 완료
-            if (password.length > 5) {
-                $('#pw_div').html('<a style="color:gray;" > 사용가능 한 패스워드입니다. </a>')
+            if (registerPw.length > 4) {
+                $('#registerPw_div').html('<a style="color:gray;" > 사용가능 한 패스워드입니다. </a>')
                 return false;
             }
         })
