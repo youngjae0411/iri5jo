@@ -7,36 +7,63 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
+    <link
+        href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css"
+        rel="stylesheet"
+        integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC"
+        crossorigin="anonymous">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <script
+        src="https://cdnjs.cloudflare.com/ajax/libs/jquery-cookie/1.4.1/jquery.cookie.js"></script>
+    <script
+        src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js"
+        integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM"
+        crossorigin="anonymous"></script>
 
-    <!-- bootstrap CSS-->
-    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.0.0/dist/css/bootstrap.min.css"
-        integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+
+
+
 
     <title>10기 E반 5조 [세나개]</title>
 
 
     <style>
-        .mybtns {
+        @font-face {
+            font-family: "neo";
+            src: url(../font/neodgm_code.woff);
+        }
+
+        .logbtn {
+
+            font-family: "neo";
+
             display: flex;
             flex-direction: row;
             align-items: center;
             justify-content: flex-end;
 
-            margin-top: 20px;
+            margin-top: 10px;
+
+
         }
 
-        .mybtns>button {
+        .logbtn>button {
+
+            font-family: "neo";
             margin-right: 10px;
         }
 
 
         .mytitle {
+
+            font-family: "neo";
+
             width: 100%;
             height: 300px;
 
-            background-image: linear-gradient(0deg, rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)), url('https://cdn.pixabay.com/photo/2017/06/10/07/15/game-2389215_960_720.png');
+            background-image: linear-gradient(0deg, rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)), url('https://i.pinimg.com/originals/1b/cb/53/1bcb531e414ab066e2ac38b02b03ceb0.gif');
             background-position: center;
-            background-size: cover;
+            background-size: 40%;
 
             color: white;
 
@@ -48,12 +75,12 @@
 
         .btn {
 
+            font-family: "neo";
+            margin-top: 10px;
             display: flex;
-            flex-direction: row;
+            flex-direction: column;
             align-items: center;
             justify-content: center;
-
-            margin-top: 20px;
 
 
         }
@@ -73,158 +100,139 @@
         }
 
         .btn>button:hover {
-            border: 1px solid white;
+
+            
+
+            box-shadow: 0 14px 28px rgba(0,0,0,0.25), 0 10px 10px rgba(0,0,0,0.22);
+            transform: translateY(-5px);
+           
         }
 
-        .mycomment {
-            color: gray;
+
+  
+        .mycard {
+
+            font-family: "neo";
+
+                      
+            width: 90%;
+            max-width: 1000px;
+           
+                                                       
         }
 
-        .mycards {
-            margin: 20px auto 0px auto;
-            width: 95%;
+        .card {
+
+            
+            margin: 30px 30px 20px 30px;
+
+
+         }
+
+
+        .card:hover {
+        box-shadow: 0 14px 28px rgba(0,0,0,0.25), 0 10px 10px rgba(0,0,0,0.22);
+        transform: translateY(-10px);
+
+        }
+
+
+        #cards-box {
+
+            
             max-width: 1200px;
+            border-radius: 8px;
+            overflow: hidden;
+            margin: 30px auto;
+            transition: all 0.3s cubic-bezier(0.42, 0.0, 0.58, 1.0);
+            padding: 10px;
+            
         }
 
-        .mypost {
-            width: 95%;
-            max-width: 500px;
-            margin: 20px auto 0px auto;
-            padding: 20px;
-            box-shadow: 0px 0px 3px 0px gray;
+           
+    
 
-            display: none;
 
-        }
 
-        .modal {
-            position: absolute;
-            top: 0;
-            left: 0;
 
-            width: 100%;
-            height: 100%;
-
-            display: none;
-
-            background-color: rgba(0, 0, 0, 0.4);
-        }
-
-        .modal.show {
-            display: block;
-
-        }
-
-        .modal_body {
-            position: absolute;
-            top: 50%;
-            left: 50%;
-
-            width: 400px;
-            height: 600px;
-
-            padding: 40px;
-
-            text-align: center;
-
-            background-color: rgb(255, 255, 255);
-            border-radius: 10px;
-            box-shadow: 0 2px 3px 0 rgba(34, 36, 38, 0.15);
-
-            transform: translateX(-50%) translateY(-50%);
-        }
-    </style>
+    </style> 
 
     <script>
 
-        const body = document.querySelector('body');
-        const modal = document.querySelector('.modal');
-        const btnOpenPopup = document.querySelector('.btn-open-popup');
 
-        btnOpenPopup.addEventListener('click', () => {
-            modal.classList.toggle('show');
-
-            if (modal.classList.contains('show')) {
-                body.style.overflow = 'hidden';
-            }
-        });
-
-        modal.addEventListener('click', (event) => {
-            if (event.target === modal) {
-                modal.classList.toggle('show');
-
-                if (!modal.classList.contains('show')) {
-                    body.style.overflow = 'auto';
-                }
-            }
-        });
-
-
+        //페이지 로드시 바로 전시 리스트 보여주기 
         $(document).ready(function () {
             listing();
         });
 
+
         function listing() {
+
             $.ajax({
                 type: 'GET',
-                url: '/review',
+                url: 'http://localhost:5000/api/Review',
                 data: {},
                 success: function (response) {
-                    let rows = response['review']
-                    for (let i = 0; i < rows.length; i++) {
-                        let comment = rows[i]['comment']
-                        let title = rows[i]['title']
-                        let star = rows[i]['star']
+
+                    console.log(response)
+
+                    let review = response
+
+                    for (let i = 0; i < response.length; i++) {
+
+                        let title = review[i]['title']
+                        let star = review[i]['star']
+                        let content = review[i]['content']
+
 
                         let star_image = '⭐'.repeat(star)
 
-                        let temp_html = `<div class="col">
-                                    <div class="card h-100">
-                                           <div class="card-body">
+
+
+
+
+
+                        let temp_html = `<div class="card">
+                                            <div class="card-body">
                                             <h5 class="card-title">${title}</h5>
-                                            <p>${star_image}</p>
-                                            <p class="mycomment">${comment}</p>
-                                        </div>
-                                    </div>
-                                </div>`
+                                            <p> ${star_image}</p>
+                                            <p class="mycomment">${content}</p>
+                                            </div>
+                                            </div>`
 
                         $('#cards-box').append(temp_html)
 
                     }
-            }})
-            }
-               
 
-                    function posting() {
-                        let url = $('#url').val()
-                        let star = $('#star').val()
-                        let comment = $('#comment').val()
+                }
+            })
+        }
 
 
-                        $.ajax({
-                            type: 'POST',
-                            url: '/movie',
-                            data: { url_give: url, star_give: star, comment_give: comment },
-                            success: function (response) {
-                                alert(response['msg'])
-                                window.location.reload()
-                            }
-                        });
-                    }
 
-                    function open_box() {
-                        $('#post-box').show()
-                    }
+        function posting() {
+            let title = $('#title').val()
+            let star = $('#star').val()
+            let content = $('#content').val()
 
-                    function close_box() {
-                        $('#post-box').hide()
-                    }
+            $.ajax({
+                type: 'POST',
+                url: 'http://localhost:5000/api/saveReview',
+                data: { title: title, star: star, content: content },
+                success: function (response) {
+                    alert(response['msg'])
+                    window.location.reload()
+                }
+            });
 
-        // 모달 on
-        //body.style.overflow = 'hidden';
-        // 모달 off
-        //body.style.overflow = 'auto';
+        }
 
+        function open_box() {
+            $('#post-box').show()
+        }
+        function close_box() {
+            $('#post-box').hide()
+        }
 
     </script>
 </head>
@@ -232,7 +240,7 @@
 
 <body>
 
-    <div class="mybtns">
+    <div class="logbtn">
 
         <button onclick="iogin_box()" type="button" class="btn btn-light">로그인</button>
         <button onclick="signup_box()" type="button" class="btn btn-dark">회원가입</button>
@@ -251,46 +259,19 @@
 
     <div class="btn">
 
-        <button onclick="mypost_box()">리뷰하기</button>
+        <button onclick="open_box()">리뷰하기</button>
 
     </div>
 
-    <div class="modal">
-        <div class="modal_body">Modal</div>
+
+    <div class="mycard">
+        <div class="row row-cols-1 row-cols-md-4 g-4" id="cards-box">
+
+
+
+        </div>
+
     </div>
-    <button class="btn-open-popup">.</button>
-    
-
-
-    <div class="mypost" id="post-box">
-        <div class="input-group mb-3">
-            <label class="input-group-text" for="inputGroupSelect01">별점</label>
-            <select class="form-select" id="star">
-                <option selected>-- 선택하기 --</option>
-                <option value="1">⭐</option>
-                <option value="2">⭐⭐</option>
-                <option value="3">⭐⭐⭐</option>
-                <option value="4">⭐⭐⭐⭐</option>
-                <option value="5">⭐⭐⭐⭐⭐</option>
-            </select></div>
-        </div>
-        <div class="form-floating">
-            <textarea id="comment" class="form-control" placeholder="Leave a comment here"></textarea>
-            <label for="floatingTextarea2">코멘트</label>
-        </div>
-        <div class="mybtns">
-            <button onclick="posting()" type="button" class="btn btn-dark">기록하기</button>
-            <button onclick="close_box()" type="button" class="btn btn-outline-dark">닫기</button>
-
-
-        </div>
-
-
-        <div class="mycards">
-            <div class="row row-cols-1 row-cols-md-4 g-4" id="cards-box">
-
-            </div>
-        </div>
 
 </body>
 
