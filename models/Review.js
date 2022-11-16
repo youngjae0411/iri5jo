@@ -9,12 +9,10 @@ const reviewSchema = mongoose.Schema({
     required : true
   },
   star : {
-    type: String,
-    required : true
+    type: String
   },
   content: {
-    type : String,
-    required : true
+    type : String
   }
 
 }, {timestamps: true})
