@@ -21,6 +21,14 @@
         <title>10기 E반 5조 [세나개]</title>
 
         <style>
+            @font-face {
+                font-family: "neo";
+                src: url("../font/neodgm_code.woff");
+            }
+            .body {
+                font-family: "neo";
+            }
+
             .mybtns {
                 display: flex;
                 flex-direction: row;
@@ -213,12 +221,11 @@
             function close_box() {
                 $('#post-box').hide()
             }
-
         </script>
     </head>
 
     <body>
-        
+
         <div class="mybtns">
 
             <button onclick="iogin_box()" type="button" class="btn btn-light">로그인</button>
@@ -283,25 +290,27 @@
         const body = document.querySelector('body');
         const btnOpenPopup = document.querySelector('.posting');
 
-
         btnOpenPopup.addEventListener('click', () => {
-        modal.classList.toggle('show');
+            modal
+                .classList
+                .toggle('show');
 
-        if (modal.classList.contains('show')) {
-            body.style.overflow = 'hidden';
-        }
-    });
-
-    modal.addEventListener('click', (event) => {
-        if (event.target === modal) {
-            modal.classList.toggle('show');
-
-            if (!modal.classList.contains('show')) {
-                body.style.overflow = 'auto';
+            if (modal.classList.contains('show')) {
+                body.style.overflow = 'hidden';
             }
-        }
-    });
+        });
 
+        modal.addEventListener('click', (event) => {
+            if (event.target === modal) {
+                modal
+                    .classList
+                    .toggle('show');
+
+                if (!modal.classList.contains('show')) {
+                    body.style.overflow = 'auto';
+                }
+            }
+        });
     </script>
 
     <div class="mycards">
