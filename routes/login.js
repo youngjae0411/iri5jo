@@ -21,9 +21,7 @@ router.post('/login', (req, res) => {
             passwordSuccess: false,
             passmsg: "비밀번호가 틀렸습니다."})
           //비밀번호까지 맞다면 토큰을 생성하기.
-        console.log('2')
           user.generateToken((err, user) => {
-            console.log('3')
             if(err) return res.status(400).send(err); 
             // 토큰을 저장한다. 어디에? 쿠키, 로컬스토리지 ... 여기선 쿠키
             res.cookie("x_auth", user.token)

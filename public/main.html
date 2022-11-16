@@ -20,6 +20,9 @@
         integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM"
         crossorigin="anonymous"></script>
 
+      <link rel="stylesheet" href="//cdn.jsdelivr.net/gh/neodgm/neodgm-webfont@latest/neodgm/style.css">     
+      <!-- 위에 폰트 주소니까 복사해서 붙여넣기! -->
+
 
 
 
@@ -28,10 +31,11 @@
 
 
     <style>
-        @font-face {
-            font-family: "neo";
-            src: url(../font/neodgm_code.woff);
-        }
+
+      * {
+        font-family: 'NeoDunggeunmo';
+      } 
+      /* 위 같은 형식으로 쓰면 됩니다 */
 
         .logbtn {
 
@@ -184,7 +188,7 @@
 
             $.ajax({
                 type: 'GET',
-                url: 'http://localhost:5000/api/Review',
+                url: 'http://localhost:5500/api/Review',
                 data: {},
                 success: function (response) {
 

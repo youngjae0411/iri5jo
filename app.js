@@ -20,6 +20,10 @@ mongoose.connect(process.env.URL)
 
 app.set('port', process.env.PORT || 3000);
 
+app.get('/', (req, res) => {
+  res.sendFile(path.resolve('public/main.html'))
+})
+
 app.use('/api', require('./routes/login'))
 app.use('/api', require('./routes/review'))
 app.use('/api', require('./routes/register'))

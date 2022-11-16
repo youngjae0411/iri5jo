@@ -1,0 +1,367 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.0.0/jquery.min.js"></script>
+
+    <!-- jQuery Modal -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-modal/0.9.1/jquery.modal.min.js"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/jquery-modal/0.9.1/jquery.modal.min.css" />
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet"
+        integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-cookie/1.4.1/jquery.cookie.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js"
+        integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM"
+        crossorigin="anonymous"></script>
+
+    <title>Register</title>
+    <style>
+        @font-face {
+            font-family: "neo";
+            src: url(../font/neodgm_code.woff);
+        }
+
+        .registerModal {
+            font-family: "neo";
+        }
+
+        .modal {
+
+            font-family: "neo";
+
+            position: absolute;
+            top: 0;
+            left: 0;
+
+            width: 100%;
+            height: 100%;
+
+            display: none;
+
+            background-color: rgba(0, 0, 0, 0.4);
+        }
+
+        .modal.show {
+            display: block;
+        }
+
+        .modal_body {
+
+            font-family: "neo";
+
+            position: absolute;
+            top: 50%;
+            left: 50%;
+
+            width: 430px;
+            height: 630px;
+
+            padding: 40px 70px 40px 70px;
+
+            text-align: left;
+
+            background-color: black;
+            border-radius: 25px;
+            box-shadow: 0 2px 3px 0 rgba(34, 36, 38, 0.15);
+
+            transform: translateX(-50%) translateY(-50%);
+        }
+
+        .registerTitle {
+
+            font-family: "neo";
+            color: lightgrey;
+
+            width: 285px;
+            height: 240px;
+
+            text-align: center;
+            background-image: url('https://media3.giphy.com/media/gYWeVOiMmbg3kzCTq5/giphy.gif?cid=ecf05e47x1fxrjqkip25knc3wma75v33m4m9yy3xfkb8kdnr&rid=giphy.gif&ct=g');
+            background-size: 280px;
+        }
+
+        .form-label {
+
+            font-family: "neo";
+            color: lightgray;
+
+            width: 250px;
+        }
+
+        .form-control {
+
+            font-family: "neo";
+            color: gray;
+
+            background-color: black;
+
+            width: 280px;
+            height: 25px;
+        }
+
+        .registerButton {
+
+            text-align: center;
+
+        }
+
+        .id {
+            width: 20px;
+            height: 25px;
+        }
+
+        .msgdiv {
+            font-size: 0.8rem;
+        }
+    </style>
+
+</head>
+
+<body>
+
+    <p>
+    <div class="registerModal">
+        <div class="modal">
+            <div class="modal_body">
+                <div class="registerTitle">
+                    <br />
+                    <h6>세상에 나쁜 게임은 없다! </h6>
+                    <h1>회원가입</h1>
+                    <br /><br /><br /><br />
+                    <h6>세나게에 오신 것을 환영합니다</h6>
+                </div>
+                <br />
+                <div class="mb-3">
+                    <label for="formGroupExampleInput" class="form-label"> Name ദ്ദിᐢ._.ᐢ₎</label>
+                    <br />
+                    <input id="name" type="text" class="form-control" id="formGroupExampleInput"
+                        placeholder="별명을 입력하여 주세요.">
+                    <div id="name_div" class="msgdiv"></div>
+                </div>
+                <div class="mb-7">
+                    <label for="formGroupExampleInput" class="form-label"> ID ๛ก( ’-’* ก)</label>
+                    <br />
+                    <input id="id" type="text" class="form-control" id="formGroupExampleInput" name="username"
+                        check_result="fail" placeholder="아이디를 입력하여 주세요." required>
+                    <div id="id_div" class="msgdiv"></div>
+                </div>
+                <div class="mb-3">
+                    <label class="form-label"> Password ( •̀ ω •́ )+</label>
+                    <br />
+                    <input id="password" type="password" class="form-control" id="formGroupExampleInput2"
+                        placeholder="비밀번호를 입력하여주세요.">
+                    <div id="pw_div" class="msgdiv"></div>
+                </div>
+                <br />
+                <div class="registerButton">
+                    <button onclick="signIn()" type="button" class="btn btn-outline-success"> 가입하기 </button>
+                    <button type="button" class="btn btn-outline-secondary" data-bs-dismiss="modal"> 그만두기 </button>
+                </div>
+            </div>
+
+        </div>
+      </p>
+        <a href="#" rel="modal:close"><button>닫기</button></a>
+        <button class="btn-open-popup">회원가입</button>
+
+    </div>
+
+</body>
+
+<script>
+
+    const body = document.querySelector('body');
+    const modal = document.querySelector('.modal');
+    const btnOpenPopup = document.querySelector('.btn-open-popup');
+    const registerClose = document.querySelector('.btn-outline-secondary')
+
+
+    //================================
+    // 모달 창 띄우기
+    //================================    
+    btnOpenPopup.addEventListener('click', () => {
+        modal.classList.toggle('show');
+
+        if (modal.classList.contains('show')) {
+            body.style.overflow = 'hidden';
+        }
+    });
+
+    //================================
+    // 모달 창 밖을 누르면 꺼지게 만들기!
+    //================================
+    modal.addEventListener('click', (event) => {
+        if (event.target === modal) {
+            modal.classList.toggle('show');
+
+            if (!modal.classList.contains('show')) {
+                body.style.overflow = 'auto';
+            }
+        }
+    });
+
+    //================================
+    // 그만두기 키 누르면 꺼지기
+    //================================
+    registerClose.addEventListener("click", (event) => {
+        if (event.target === registerClose) {
+            modal.classList.toggle('show');
+
+            if (!modal.classList.contains('show')) {
+                body.style.overflow = 'auto';
+            }
+        }
+    });
+
+    //================================
+    // 회원가입 서버로 정보 보내기!
+    //================================
+    function signIn() {
+        let name = $('#name').val()
+        let id = $('#id').val()
+        let Password = $('#password').val()
+
+        //================================
+        //회원가입 시키는 함수
+        //================================
+        $.ajax({
+            type: 'POST',
+            url: 'http://localhost:5500/api/register',
+            data: {
+                name: name,
+                id: id,
+                password: Password
+            },
+            success: function (response) {
+                console.log(response)
+                if (response['success'] === true) {
+                    alert('회원가입이 완료되었습니다.'),
+                        modal.classList.toggle('show');
+                    if (!modal.classList.contains('show')) {
+                        body.style.overflow = 'auto';
+                    }
+                    window.location.reload()
+                } else {
+                    alert(response['msg'])
+                }
+            }
+        });
+        //================================
+        // 회원가입 함수는 요기까지!
+        //================================
+
+
+
+    }
+
+    //================================
+    // ID 정보 검사 후 경고 문구
+    //================================
+    $(document).ready(function () {
+
+        $("#id").on("focusout", function () {
+            var id = $('input[id=id]').val();
+
+            // 빈 값 체크
+            if (id == '' || id.length == 0) {
+                $('#id_div').html('<a style="color:red;" > 아이디를 입력해주세요. </a>');
+                return false;
+            }
+
+            $.ajax({
+                url: "http://localhost:5500/api/register/confirm/id",
+                type: "POST",
+                data: { id: id },
+                success: function (response) {
+                    console.log(response)
+
+                    if (response.id == false) {
+                        $('#id_div').html('<a style="color:gray;" > 사용 가능한 아이디 입니다. </a>')
+                    } else {
+                        $('#id_div').html('<a style="color:red;" > 사용 불가능한 아이디 입니다. </a>')
+                    }
+                }
+            })
+
+                .fail(function (xhr, status, errorThrown) {
+                    console.log("Ajax 실패 : " + errorThrown);
+                    $('#id_div').html('<a style="color:red;" > 통신 중 오류가 발생하였습니다. </a>')
+                })
+        })
+    })
+
+    //================================
+    // Name 정보 검사 후 경고 문구
+    //================================
+    $(document).ready(function () {
+
+        $("#name").on("focusout", function () {
+            var name = $('input[id=name]').val();
+
+            // 빈 값 체크
+            if (name == '' || name.length == 0) {
+                $('#name_div').html('<a style="color:red;" >닉네임을 입력해주세요. </a>')
+                return false;
+            }
+
+
+            $.ajax({
+                url: "http://localhost:5500/api/register/confirm/name",
+                type: "POST",
+                data: { name: name },
+                success: function (response) {
+                    console.log(response)
+
+                    if (response.name == false) {
+                        $('#name_div').html('<a style="color:gray;" > 사용 가능한 닉네임 입니다. </a>')
+                    } else {
+                        $('#name_div').html('<a style="color:red;" > 사용 불가능한 닉네임 입니다. </a>')
+                    }
+                }
+            })
+
+                .fail(function (xhr, status, errorThrown) {
+                    console.log("Ajax 실패 : " + errorThrown);
+                    $('#name_div').html('<a style="color:red;" > 통신 중 오류가 발생하였습니다. </a>')
+                })
+        })
+    })
+
+    //================================
+    // Password 정보 검사 후 경고 문구
+    //================================
+    $(document).ready(function () {
+
+        $("#password").on("focusout", function () {
+            var password = $('input[id=password]').val();
+
+            // 빈 값 체크
+            if (password == '' || password.length == 0) {
+                $('#pw_div').html('<a style="color:red;" >비밀번호를 입력해주세요. </a>')
+                return false;
+            }
+
+            // 길이 체크
+            if (password.length < 5) {
+                $('#pw_div').html('<a style="color:red;" > 5자 이상 입력해주세요. </a>')
+                return false;
+            }
+
+            // 완료
+            if (password.length > 5) {
+                $('#pw_div').html('<a style="color:gray;" > 사용가능 한 패스워드입니다. </a>')
+                return false;
+            }
+        })
+    })
+
+
+</script>
+
+
+</html>
