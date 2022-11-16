@@ -23,6 +23,7 @@ app.set('port', process.env.PORT || 3000);
 app.use('/api', require('./routes/login'))
 app.use('/api', require('./routes/review'))
 app.use('/api', require('./routes/register'))
+app.use('/api', require('./routes/registerConfirm'))
 
 var path = require('path');
 app.use('/node_modules', express.static(path.join(__dirname + '/node_modules')))

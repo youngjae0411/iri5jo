@@ -28,7 +28,7 @@ router.post('/register', (req, res) => {
   
     // mongoDB에 저장을 해주기
     user.save((err, userInfo) => {
-      if(err) return res.json({ success: false, msg : '중복 된 아이디 혹은 잘못 된 비밀번호 입니다.'})
+      if(err) return res.json({ success: false, msg : '입력하신 정보를 다시 확인해주세요 :('})
       return res.status(200).json({
         success: true, msg : "회원가입을 성공하였습니다."
       })
