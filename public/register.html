@@ -1,13 +1,18 @@
 <!DOCTYPE html>
-<html lang="ko">
+<html lang="en">
 
 <head>
     <meta charset="UTF-8">
-
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
-
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    
+
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet"
+        integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-cookie/1.4.1/jquery.cookie.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js"
+        integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM"
+        crossorigin="anonymous"></script>
 
     <title>Register</title>
     <style>
@@ -15,6 +20,11 @@
             font-family: "neo";
             src: url(../font/neodgm_code.woff);
         }
+
+        .registerModal {
+            font-family: "neo";
+        }
+
         .modal {
 
             font-family: "neo";
@@ -28,7 +38,7 @@
 
             display: none;
 
-            background-color: dimgray;
+            background-color: rgba(0, 0, 0, 0.4);
         }
 
         .modal.show {
@@ -43,8 +53,8 @@
             top: 50%;
             left: 50%;
 
-            width: 280px;
-            height: 570px;
+            width: 430px;
+            height: 630px;
 
             padding: 40px 70px 40px 70px;
 
@@ -59,15 +69,16 @@
 
         .registerTitle {
 
-            font-family: "neo", white;
+            font-family: "neo";
+            color: lightgrey;
 
-            width: 280px;
+            width: 285px;
             height: 240px;
 
             text-align: center;
             background-image: url('https://media3.giphy.com/media/gYWeVOiMmbg3kzCTq5/giphy.gif?cid=ecf05e47x1fxrjqkip25knc3wma75v33m4m9yy3xfkb8kdnr&rid=giphy.gif&ct=g');
             background-size: 280px;
-        }   
+        }
 
         .form-label {
 
@@ -86,63 +97,119 @@
 
         .registerButton {
 
-            font-family: "neo";
-
             text-align: center;
 
         }
-
-
     </style>
+    <script>
+
+        function signIn() {
+            let name = $('#name').val()
+            let id = $('#id').val()
+            let Password = $('#password').val()
+
+            $.ajax({
+                type: 'POST',
+                url: 'http://localhost:5000/api/register',
+                data: {
+                    name: name,
+                    id: id,
+                    password: Password
+                },
+                success: function (response) {
+                    console.log(response)
+                    if (response['success'] === true) {
+                        alert('회원가입이 완료되었습니다.')
+                        window.location.reload()
+                     } else {
+                         alert(response['msg'])
+                     }
+                }
+            });
+        }
+
+    </script>
 
 
 </head>
 
 <body>
-    <div class="modal">
-        <div class="modal_body">
-            <div class="registerTitle">
-                <h5>세상에 나쁜 게임은 없다! </h5>
-                <h1>회원가입</h1>
-                <h3>세나게에 오신 것을 환영합니다</h3>
-            </div>
-            <br />
-            <div class="mb-3">
-                <label for="formGroupExampleInput" class="text-start">Name</label>
-                <br />
-                <input type="text" class="form-control" id="formGroupExampleInput" placeholder="별명을 입력하여 주세요.">
-            </div>
-            <br />
-            <div class="mb-3">
-                <label for="formGroupExampleInput" class="text-start">ID</label>
-                <br />
-                <input type="text" class="form-control" id="formGroupExampleInput" placeholder="아이디를 입력하여 주세요.">
-            </div>
-            <br />
-            <div class="mb-3">
-                <label class="form-label">Password</label>
-                <br />
-                <input type="text" class="form-control" id="formGroupExampleInput2" placeholder="비밀번호를 입력하여 주세요.">
-            </div>
-            <br /><br /><br />
-            <div class="registerButton">
-                <button class="signIn"> 가입하기 </button>
-                <button class="modal_out"> 그만두기 </button>    
-            </div>
+    <div class="registerModal">
 
+        <div class="modal">
+            <div class="modal_body">
+                <div class="registerTitle">
+                    <br />
+                    <h6>세상에 나쁜 게임은 없다! </h6>
+                    <h1>회원가입</h1>
+                    <br /><br /><br /><br />
+                    <h6>세나게에 오신 것을 환영합니다</h6>
+                </div>
+                <br />
+                <div class="mb-3">
+                    <label for="formGroupExampleInput" class="text-start">Name</label>
+                    <br />
+                    <input id="name" type="text" class="form-control" id="formGroupExampleInput"
+                        placeholder="별명을 입력하여 주세요.">
+                </div>
+                <div class="mb-3">
+                    <label for="formGroupExampleInput" class="text-start">ID</label>
+                    <br />
+                    <input id="id" type="text" class="form-control" id="formGroupExampleInput"
+                        placeholder="아이디를 입력하여 주세요.">
+                </div>
+                <div class="mb-3">
+                    <label class="form-label">Password</label>
+                    <br />
+                    <input id="password" type="password" class="form-control" id="formGroupExampleInput2"
+                        placeholder="5자리 이상의 문자 혹은 숫자를 입력하여주세요.">
+                </div>
+                <br />
+                <div class="registerButton">
+                    <button onclick="signIn()" type="button" class="btn btn-outline-success"> 가입하기 </button>
+                    <button type="button" class="btn btn-outline-secondary" data-bs-dismiss="modal"> 그만두기 </button>
+                </div>
+            </div>
 
         </div>
+        <button class="btn-open-popup">회원가입</button>
 
     </div>
-    <button class="btn-open-popup">회원가입</button>
-    <script>
-        const modal = document.querySelector('.modal');
-        const btnopenpopup = document.querySelector('.btn-open-popup')
 
-        btnopenpopup.addEventListener('click', () => {
-            modal.style.display = 'block';
-        });
-    </script>
 </body>
+
+<script>
+    const registerClose = document.querySelector('.btn-outline-secondary')
+
+    const body = document.querySelector('body');
+    const modal = document.querySelector('.modal');
+    const btnOpenPopup = document.querySelector('.btn-open-popup');
+
+    btnOpenPopup.addEventListener('click', () => {
+        modal.classList.toggle('show');
+
+        if (modal.classList.contains('show')) {
+            body.style.overflow = 'hidden';
+        }
+    });
+
+    modal.addEventListener('click', (event) => {
+        if (event.target === modal) {
+            modal.classList.toggle('show');
+
+            if (!modal.classList.contains('show')) {
+                body.style.overflow = 'auto';
+            }
+        }
+    });
+
+    registerClose.addEventListener("click", () => {
+        modal.style.display = 'none';
+    });
+
+
+
+</script>
+
 
 </html>

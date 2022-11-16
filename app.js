@@ -24,6 +24,10 @@ app.use('/api', require('./routes/login'))
 app.use('/api', require('./routes/review'))
 app.use('/api', require('./routes/register'))
 
+var path = require('path');
+app.use('/node_modules', express.static(path.join(__dirname + '/node_modules')))
+
+
 app.listen(app.get('port'), () => {
     console.log(app.get('port'), '번 포트에서 대기 중')
 })
