@@ -32,11 +32,13 @@
 
     <style>
 
-      * {
+    * {
         font-family: 'NeoDunggeunmo';
-      } 
-      /* 위 같은 형식으로 쓰면 됩니다 */
+    } 
+    /* 위 같은 형식으로 쓰면 됩니다 */
 
+
+    /* 기존스타일 */
         .logbtn {
 
             font-family: "neo";
@@ -166,6 +168,7 @@
             padding: 10px;
             
         }
+    /* 기존스타일 */
 
            
     /* 김혜란 스타일 */
@@ -240,14 +243,149 @@
         }
     /* 김혜란 스타일 */
 
+    /* 전상국 스타일 */
+        .modal {
+            position: absolute;
+            top: 0;
+            left: 0;
 
+            width: 100%;
+            height: 100%;
+
+            display: none;
+
+            background-color: rgba(0, 0, 0, 0.4);
+        }
+
+        .modal.show {
+            display: block;
+        }
+
+        .loginmodal_body {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+
+            width: 430px;
+            height: 630px;
+
+            padding: 40px 70px 40px 70px;
+
+            text-align: left;
+
+            background-color: black;
+            border-radius: 25px;
+            box-shadow: 0 2px 3px 0 rgba(34, 36, 38, 0.15);
+
+            transform: translateX(-50%) translateY(-50%);
+        }
+
+        .loginTitle {
+            color: lightgrey;
+
+            width: 280px;
+            height: 240px;
+
+            text-align: center;
+            background-image: url('https://i.pinimg.com/originals/f6/7a/12/f67a122b8f6af771bcabd8db7c641c5e.gif');
+            background-size: 280px;
+            background-position: center;
+        }
+
+        .form-label {
+            color: lightgray;
+
+            width: 250px;
+        }
+
+        .form-control {
+            width: 280px;
+            height: 25px;
+        }
+
+        .loginButton {
+            text-align: center;
+
+        }
+
+        .logoutbtn {
+            display: none;
+        }
+    /* 전상국 스타일 */
 
     </style> 
+
+<!-- 전상국 ajax스크립트 -->
+    <!-- 로그인 페이지 진입 시 쿠키값이 비어있지 않다면 로그인버튼을 숨기고 로그아웃버튼을 보인다. -->
+    <script>
+        $(document).ready(function () {
+            if (document.cookie !== "") {
+                $('#loginbtn').hide()
+                $('#logoutbtn').show()
+            }
+        })
+    </script>
+    <!-- 로그인 로그아웃 ajax -->
+    <script>
+        function log_In() {
+            // 인풋값을 저장
+            let loginid = $('#id-input').val()
+            let loginpassword = $('#password-input').val()
+            
+            $.ajax({
+                type: 'POST',
+                url: 'http://localhost:5500/api/login',
+                data: {
+                    id: loginid,
+                    password: loginpassword
+                },
+                success: function (response) {
+                    if (response['loginSuccess'] === true) {
+                        $.cookie('x_auth', response['token']);
+                        alert('로그인이 완료되었습니다.')
+                        if (document.cookie !== "") {
+                            $('#loginbtn').hide()
+                            $('#logoutbtn').show()
+                            $('#modalres').hide()
+                        }
+                    } else if (response['loginSuccess'] === false) {
+                        alert(response['loginmsg'])
+                    } else if (response['passwordSuccess'] === false) {
+                        alert(response['passmsg'])
+                        $('#password-input').val('')
+                    }
+                }
+            });
+        }
+        function log_out() {
+            $.ajax({
+                type: 'GET',
+                url: 'http://localhost:5500/api/logout',
+                data: {
+                },
+                success: function (response) {
+                    //로그아웃시 쿠키삭제
+                    $.removeCookie('x_auth', response['token']);
+                    alert('로그아웃이 완료되었습니다.')
+                    window.location.reload()
+                    //로그아웃버튼 숨기고 로그인버튼 출력
+                    $('#login').show()
+                    $('#logout').hide()
+                }
+            })
+        }
+        function logcancle() {
+            window.location.reload()
+        }
+    </script>
+<!-- 전상국 ajax스크립트 -->
+
 
 </head>
 
 
 <body>
+
     <!-- 김혜란 바디 -->
     <div class="registerModalBox">
         <div class="modal" id="registerModal">
@@ -290,11 +428,57 @@
         </div>
     </div>
     <!-- 김혜란 바디 -->
+
+    <!-- 전상국 바디 -->
+    <div class="loginModalbox">
+        <div id="modalres" id="loginModal" class="modal">
+            <div class="loginmodal_body">
+                <div class="loginTitle">
+                    <br />
+                    <h6>세상에 나쁜 게임은 없다! </h6>
+                    <h1>로그인</h1>
+                    <br /><br /><br /><br />
+                    <h6>세나게에 오신 것을 환영합니다</h6>
+                </div>
+                <br />
+                <br />
+                <div class="mb-3">
+                    <label for="formGroupExampleInput" class="form-label">ID (。・∀・)ノ</label>
+                    <br />
+                    <input id="id-input" type="text" class="form-control" id="formGroupExampleInput"
+                        placeholder="아이디를 입력하여 주세요.">
+                </div>
+                <br />
+                <div class="mb-3">
+                    <label class="form-label">Password (((o(*ﾟ▽ﾟ*)o)))</label>
+                    <br />
+                    <input id="password-input" type="password" class="form-control" id="formGroupExampleInput2"
+                        placeholder="비밀번호를 입력하여주세요.">
+                </div>
+                <br />
+                <br />
+                <br />
+                <div class="loginButton">
+                    <button id="login" onclick="log_In()" type="button" class="btn btn-outline-success"> 로그인하기 </button>
+                    <button id="loginClose" onclick="logcancle()" type="button" class="login-btn-outline-secondary" data-bs-dismiss="loginModal"> 그만두기 </button>
+                </div>
+            </div>
+        </div>
+
+    </div>
+    <!-- 전상국 바디 -->
+
     <div class="logbtn">
-        <button onclick="iogin_box()" type="button" class="btn btn-light">로그인</button>
+        
+        <!-- 전상국 로그인, 아웃 버튼 -->
+        <button id="loginbtn" class="login-btn-open-popup">로그인</button>
+        <button onclick="log_out()" class="logoutbtn" id="logoutbtn"> 로그아웃 </button>
+        <!-- 전상국 로그인, 아웃 버튼 -->
+
         <!-- 김혜란 회원가입버튼 -->
         <button class="register-btn-open-popup">회원가입</button> 
         <!-- 김혜란 회원가입버튼 -->
+
     </div>
 
 
@@ -325,7 +509,44 @@
 
 </body>
 
+<!-- 전상국 버튼 스크립트 -->
+<script>
+    //
+    const loginModalbox = document.querySelector('.loginModalbox');
+    const loginmodal = document.querySelector('#modalres');
+    const loginbtnOpenPopup = document.querySelector('.login-btn-open-popup');
+    const loginClose = document.querySelector('#loginClose')
+    // 
+    loginbtnOpenPopup.addEventListener('click', () => {
+        loginmodal.classList.toggle('show');
 
+        if (loginmodal.classList.contains('show')) {
+            loginModalbox.style.overflow = 'hidden';
+        }
+    });
+    //
+    loginmodal.addEventListener('click', (event) => {
+        if (event.target === loginmodal) {
+            loginmodal.classList.toggle('show');
+
+            if (!loginmodal.classList.contains('show')) {
+                loginModalbox.style.overflow = 'auto';
+            }
+        }
+    });
+    //
+    loginClose.addEventListener("click", (event) => {
+        if (event.target === loginClose) {
+            loginmodal.classList.toggle('show');
+            if (!loginmodal.classList.contains('show')) {
+                loginModalbox.style.overflow = 'auto';
+            }
+        }
+    });
+</script>
+<!-- 전상국 버튼 스크립트 -->
+
+<!-- 김혜란 버튼 스크립트 -->
 <script>
 
     //=== 김혜란 스크립트 시작 ================================================================
@@ -562,5 +783,6 @@
     }
 
 </script>
+<!-- 김혜란 버튼 스크립트 -->
 
 </html>
