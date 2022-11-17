@@ -34,7 +34,7 @@
         }
 
         body {
-            background-image: linear-gradient(0deg, rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0)), url('../css/KakaoTalk_Photo_2022-11-17-10-31-19.jpeg');
+            background-image: linear-gradient(0deg, rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0)), url('https://s3.ap-northeast-2.amazonaws.com/geniuskim.shop/KakaoTalk_Photo_2022-11-17-10-31-19.jpeg');
             background-position: center;
             background-size: 80%;
             /* background-repeat: no-repeat; */
@@ -393,7 +393,7 @@
 
             $.ajax({
                 type: 'POST',
-                url: 'http://localhost:5500/api/login',
+                url: 'http://43.201.109.30:5000/api/login',
                 data: {
                     id: loginid,
                     password: loginpassword
@@ -412,7 +412,7 @@
 
                             $.ajax({
                                 type: 'GET',
-                                url: 'http://localhost:5500/api/writer',
+                                url: 'http://43.201.109.30:5000/api/writer',
                                 data: {},
                                 success: function (response) {
 
@@ -443,7 +443,7 @@
         function log_out() {
             $.ajax({
                 type: 'GET',
-                url: 'http://localhost:5500/api/logout',
+                url: 'http://43.201.109.30:5000/api/logout',
                 data: {
                 },
                 success: function (response) {
@@ -477,7 +477,7 @@
 
             $.ajax({
                 type: 'POST',
-                url: 'http://localhost:5500/api/saveReview',
+                url: 'http://43.201.109.30:5000/api/saveReview',
                 data: {
                     title: title,
                     star: star,
@@ -511,6 +511,7 @@
 
 
 <body>
+
 
     <!-- 김혜란 바디 -->
     <div class="registerModalBox">
@@ -653,6 +654,7 @@
 
             <!-- 김혜란 회원가입버튼 -->
             <button style="font-family:'NeoDunggeunmo';" id="regBtn" class="register-btn-open-popup">회원가입</button>
+            <audio controls autoplay src="https://www.mboxdrive.com/backmusic.mp3"></audio>
             <!-- 김혜란 회원가입버튼 -->
 
         </div>
@@ -771,7 +773,7 @@
         //회원가입 시키는 함수
         $.ajax({
             type: 'POST',
-            url: 'http://localhost:5500/api/register',
+            url: 'http://43.201.109.30:5000/api/register',
             data: {
                 name: registerName,
                 id: registerId,
@@ -803,7 +805,7 @@
             }
 
             $.ajax({
-                url: "http://localhost:5500/api/register/confirm/Id",
+                url: "http://43.201.109.30:5000/api/register/confirm/Id",
                 type: "POST",
                 data: { id: registerId },
                 success: function (response) {
@@ -837,7 +839,7 @@
 
 
             $.ajax({
-                url: "http://localhost:5500/api/register/confirm/Name",
+                url: "http://43.201.109.30:5000/api/register/confirm/Name",
                 type: "POST",
                 data: { name: registerName },
                 success: function (response) {
@@ -896,7 +898,7 @@
 
         $.ajax({
             type: 'GET',
-            url: 'http://localhost:5500/api/Review',
+            url: 'http://43.201.109.30:5000/api/Review',
             data: {
 
             },
@@ -924,7 +926,7 @@
 
                     let temp_html = `<div class="card">
                                         <div class="card-body">
-                                        <img class="img" src="${url}" >                                   
+                                        <img  class="img" src="${url}" >                                   
                                         <h5 class="card-title">${title}</h5>
                                         <p>${writer}</p>
                                         <p> ${star_image}</p>
