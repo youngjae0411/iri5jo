@@ -397,7 +397,6 @@
                     <br /><br /><br /><br />
                     <h6>세나게에 오신 것을 환영합니다</h6>
                 </div>
-                <br />
                 <div class="mb-3">
                     <label for="formGroupExampleInput" class="form-label"> Name ദ്ദിᐢ._.ᐢ₎</label>
                     <br />
@@ -412,6 +411,7 @@
                         check_result="fail" placeholder="아이디를 입력하여 주세요." required>
                     <div id="registerId_div" class="msgdiv"></div>
                 </div>
+              </br>
                 <div class="mb-3">
                     <label class="form-label"> Password ( •̀ ω •́ )+</label>
                     <br />
@@ -419,7 +419,7 @@
                         placeholder="비밀번호를 입력하여주세요.">
                     <div id="registerPw_div" class="msgdiv"></div>
                 </div>
-                <br />
+
                 <div style="text-align: center;" class="registerButton">
                     <button style= "font-family:'NeoDunggeunmo'; display :inline-block;" onclick="signIn()" type="button" class="btn btn-outline-success"> 가입하기 </button>
                     <button style= "font-family:'NeoDunggeunmo'; display :inline-block;" type="button" id="registerClose" class="btn btn-outline-secondary" data-bs-dismiss="registerModal"> 그만두기 </button>
@@ -456,8 +456,6 @@
                         placeholder="비밀번호를 입력하여주세요.">
                 </div>
                 <br />
-                <br />
-                <br />
                 <div style="text-align: center;" class="loginButton">
                     <button style= "font-family:'NeoDunggeunmo'; display :inline-block;" id="login" onclick="log_In()" type="button" class="btn btn-outline-success"> 로그인하기 </button>
                     <button style= "font-family:'NeoDunggeunmo'; display :inline-block;" id="loginClose" onclick="logcancle()" type="button" class="btn btn-outline-secondary" data-bs-dismiss="loginModal"> 그만두기 </button>
@@ -471,12 +469,12 @@
     <div class="logbtn">
         
         <!-- 전상국 로그인, 아웃 버튼 -->
-        <button id="loginbtn" class="login-btn-open-popup">로그인</button>
-        <button onclick="log_out()" class="logoutbtn" id="logoutbtn"> 로그아웃 </button>
+        <button style= "font-family:'NeoDunggeunmo';" id="loginbtn" class="login-btn-open-popup">로그인</button>
+        <button style= "font-family:'NeoDunggeunmo';" onclick="log_out()" class="logoutbtn" id="logoutbtn"> 로그아웃 </button>
         <!-- 전상국 로그인, 아웃 버튼 -->
 
         <!-- 김혜란 회원가입버튼 -->
-        <button class="register-btn-open-popup">회원가입</button> 
+        <button style= "font-family:'NeoDunggeunmo';" class="register-btn-open-popup">회원가입</button> 
         <!-- 김혜란 회원가입버튼 -->
 
     </div>
@@ -500,9 +498,6 @@
 
     <div class="mycard">
         <div class="row row-cols-1 row-cols-md-5 g-5" id="cards-box">
-
-
-
         </div>
 
     </div>
