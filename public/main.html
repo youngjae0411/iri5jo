@@ -131,7 +131,15 @@
 
         }
 
+            /* 실행안될시  1) .img  2) #cards-box > img 로 변경해서 */
 
+        
+        .card.img {
+
+            display: block;
+            width: 100%;
+            object-fit: cover;
+        }
 
         .mycard {
 
@@ -912,7 +920,7 @@
 
                     let temp_html = `<div class="card">
                                         <div class="card-body">
-                                        <img style="width:180px; height:150px;"  src="${url}">                                   
+                                        <img class=img" src="${url}">                                   
                                         <h5 class="card-title">${title}</h5>
                                         <p>${writer}</p>
                                         <p> ${star_image}</p>
