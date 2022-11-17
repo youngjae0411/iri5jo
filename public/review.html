@@ -151,40 +151,40 @@
 
         <script>
 
-            $(document).ready(function () {
-                listing();
-            });
+            // $(document).ready(function () {
+            //     listing();
+            // });
 
-            function listing() {
-                $.ajax({
-                    type: 'GET',
-                    url: 'http://localhost:5500/api/review',
-                    data: {},
-                    success: function (response) {
-                        let rows = response
-                        for (let i = 0; i < rows.length; i++) {
-                            let comment = rows[i]['content']
-                            let title = rows[i]['title']
-                            let star = rows[i]['star']
+            // function listing() {
+            //     $.ajax({
+            //         type: 'GET',
+            //         url: 'http://localhost:5500/api/review',
+            //         data: {},
+            //         success: function (response) {
+            //             let rows = response
+            //             for (let i = 0; i < rows.length; i++) {
+            //                 let comment = rows[i]['content']
+            //                 let title = rows[i]['title']
+            //                 let star = rows[i]['star']
 
-                            let star_image = '⭐'.repeat(star)
+            //                 let star_image = '⭐'.repeat(star)
 
-                            let temp_html = `<div class="col">
-                                    <div class="card h-100">
-                                           <div class="card-body">
-                                            <h5 class="card-title">${title}</h5>
-                                            <p>${star_image}</p>
-                                            <p class="mycomment">${comment}</p>
-                                        </div>
-                                    </div>
-                                </div>`
+            //                 let temp_html = `<div class="col">
+            //                         <div class="card h-100">
+            //                                <div class="card-body">
+            //                                 <h5 class="card-title">${title}</h5>
+            //                                 <p>${star_image}</p>
+            //                                 <p class="mycomment">${comment}</p>
+            //                             </div>
+            //                         </div>
+            //                     </div>`
 
-                            $('#cards-box').append(temp_html)
+            //                 $('#cards-box').append(temp_html)
 
-                        }
-                    }
-                })
-            }
+            //             }
+            //         }
+            //     })
+            // }
 
             function posting() {
                 let title = $('#title').val()
@@ -218,22 +218,22 @@
                 });
             }
 
-            function open_box() {
-                $('#post-box').show()
-            }
+            // function open_box() {
+            //     $('#post-box').show()
+            // }
 
-            function close_box() {
-                $('#post-box').hide()
-            }
+            // function close_box() {
+            //     $('#post-box').hide()
+            // }
         </script>
     </head>
 
     <body>
 
         <div class="mybtns">
-
+<!-- 
             <button onclick="iogin_box()" type="button" class="btn btn-light">로그인</button>
-            <button onclick="signup_box()" type="button" class="btn btn-dark">회원가입</button>
+            <button onclick="signup_box()" type="button" class="btn btn-dark">회원가입</button> -->
 
         </div>
 
@@ -247,7 +247,6 @@
 
         <div class="modal">
             <div class="modal_body">
-                <div class="registerTitle"></div>
                 <div class="mb-3">
                     <label for="formGroupExampleInput" class="form-label">게임이름 ദ്ദിᐢ._.ᐢ₎</label>
                     <br/>
