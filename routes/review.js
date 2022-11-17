@@ -3,11 +3,12 @@ const { default: mongoose } = require("mongoose");
 const router = express.Router();
 var path = require("path");
 
-const { Review } = require("../models/Review");
 const User = require("../models/User");
+const { Review } = require("../models/Review");
 
 /* GET home page. */
-router.get("/Review", (req, res) => {
+
+router.get('/Review', (req, res) => {
   Review.find((err, doc) => {
     if (err) return res.status(400).send({ success: false, err: err });
     else return res.status(200).send(doc);
@@ -16,6 +17,7 @@ router.get("/Review", (req, res) => {
 
 //리뷰 디비에 저장
 router.post("/saveReview", (req, res) => {
+
   const review = new Review(req.body);
 
   review.save((err, doc) => {

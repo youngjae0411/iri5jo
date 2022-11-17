@@ -16,7 +16,10 @@ const reviewSchema = mongoose.Schema({
     type : String,
     required : true
   },
-  writer: {
+  image :{
+    type : String
+  },
+  writer : {
     type : String
   }
 
