@@ -368,7 +368,7 @@
                 $('#regBtn').hide()
                 $('#logoutbtn').show()
                 $('#reviewbtn').show()
-                
+
             }
         })
     </script>
@@ -396,6 +396,27 @@
                             $('#logoutbtn').show()
                             $('#reviewbtn').show()
                             $('#modalres').hide()
+                            localStorage.setItem('loginId', loginid)
+
+                            $.ajax({
+                                type: 'GET',
+                                url: 'http://localhost:5500/api/writer',
+                                data: {},
+                                success: function (response) {
+
+                                    console.log(response)
+
+                                    for (let i = 0; i < response.length; i++) {
+                                        let writer = response[i]['name']
+                                        let id = response[i]['id']
+                                        console.log(writer, id)
+
+                                        if (id === localStorage.getItem('loginId')) {
+                                            localStorage.setItem('writer', writer)
+                                        }
+                                    }
+                                }
+                            })
                         }
                     } else if (response['loginSuccess'] === false) {
                         alert(response['loginmsg'])
@@ -422,6 +443,7 @@
                     $('#regBtn').show()
                     $('#logout').hide()
                     $('#reviewbtn').hide()
+                    localStorage.clear()
                 }
             })
         }
@@ -437,6 +459,12 @@
             let title = $('#title').val()
             let star = $('#star').val()
             let content = $('#content').val()
+            let writerId = localStorage.getItem('loginId')
+
+
+
+
+
 
             $.ajax({
                 type: 'POST',
@@ -444,16 +472,17 @@
                 data: {
                     title: title,
                     star: star,
-                    content: content
+                    content: content,
+                    writer: localStorage.getItem('writer')
                 },
                 success: function (response) {
 
                     console.log(response)
                     if (response.success === true) {
                         alert(response['msg'])
-                        window
-                            .location
-                            .reload()
+                        // window
+                        //     .location
+                        //     .reload()
                     } else if (response.success === false && response.tit === "") {
                         alert('타이틀을 입력해주세요!')
                     } else if (response.success === false && response.st === "") {

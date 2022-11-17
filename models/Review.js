@@ -15,6 +15,9 @@ const reviewSchema = mongoose.Schema({
   content: {
     type : String,
     required : true
+  },
+  writer: {
+    type : String
   }
 
 }, {timestamps: true})
