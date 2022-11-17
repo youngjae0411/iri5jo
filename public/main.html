@@ -7,21 +7,16 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-    <link
-        href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css"
-        rel="stylesheet"
-        integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC"
-        crossorigin="anonymous">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet"
+        integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
-    <script
-        src="https://cdnjs.cloudflare.com/ajax/libs/jquery-cookie/1.4.1/jquery.cookie.js"></script>
-    <script
-        src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js"
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-cookie/1.4.1/jquery.cookie.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js"
         integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM"
         crossorigin="anonymous"></script>
 
-      <link rel="stylesheet" href="//cdn.jsdelivr.net/gh/neodgm/neodgm-webfont@latest/neodgm/style.css">     
-      <!-- 위에 폰트 주소니까 복사해서 붙여넣기! -->
+    <link rel="stylesheet" href="//cdn.jsdelivr.net/gh/neodgm/neodgm-webfont@latest/neodgm/style.css">
+    <!-- 위에 폰트 주소니까 복사해서 붙여넣기! -->
 
 
 
@@ -31,14 +26,29 @@
 
 
     <style>
-
-    * {
-        font-family: 'NeoDunggeunmo';
-    } 
-    /* 위 같은 형식으로 쓰면 됩니다 */
+        .w-btn-gra1 {
 
 
-    /* 기존스타일 */
+            background: linear-gradient(-45deg, #33ccff 0%, #ff99cc 100%);
+            color: white;
+        }
+
+        body {
+            background-image: linear-gradient(0deg, rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0)), url('../css/KakaoTalk_Photo_2022-11-17-10-31-19.jpeg');
+            background-position: center;
+            background-size: 80%;
+            /* background-repeat: no-repeat; */
+            background-attachment: fixed;
+        }
+
+        * {
+            font-family: 'NeoDunggeunmo';
+        }
+
+        /* 위 같은 형식으로 쓰면 됩니다 */
+
+
+        /* 기존스타일 */
         .logbtn {
 
             font-family: "neo";
@@ -65,9 +75,10 @@
             font-family: "neo";
 
             width: 100%;
-            height: 300px;
+            height: 350px;
 
-            background-image: linear-gradient(0deg, rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)), url('https://i.pinimg.com/originals/1b/cb/53/1bcb531e414ab066e2ac38b02b03ceb0.gif');
+            /* background-image: linear-gradient(0deg, rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0)), url('../css/KakaoTalk_Photo_2022-11-17-10-08-31.png'); */
+
             background-position: center;
             background-size: 40%;
 
@@ -96,7 +107,7 @@
             width: 200px;
             height: 50px;
 
-            
+
             color: white;
 
             border-radius: 50px;
@@ -108,70 +119,65 @@
 
 
 
-        .w-btn-gra1 {
 
-            
-            background: linear-gradient(-45deg, #33ccff 0%, #ff99cc 100%);
-            color: white;
-        }
 
-        
+
 
         .btn>button:hover {
 
-            
-            box-shadow: 0 14px 28px rgba(0,0,0,0.25), 0 10px 10px rgba(255, 255, 255, 0.22);
+
+            box-shadow: 0 14px 28px rgba(0, 0, 0, 0.25), 0 10px 10px rgba(255, 255, 255, 0.22);
             transform: translateY(-4px);
-           
+
         }
 
 
-  
+
         .mycard {
 
-            
-            
+
+
             margin: 10px auto 10px auto;
             width: 100%;
             max-width: 1200px;
-            
-           
-                                                       
+
+
+
         }
 
         .card {
 
-            
-            margin: auto 20px 20px 20px ;
 
+            margin: auto 20px 20px 20px;
 
-         }
-
-
-        .card:hover {
-        box-shadow: 0 14px 28px rgba(0,0,0,0.25), 0 10px 10px rgba(0,0,0,0.22);
-        transform: translateY(-10px);
 
         }
 
-        
+
+        .card:hover {
+            box-shadow: 0 14px 28px rgba(0, 0, 0, 0.25), 0 10px 10px rgba(0, 0, 0, 0.22);
+            transform: translateY(-10px);
+
+        }
+
+
 
         #cards-box {
 
-            
-
+            background-color: white;
             width: 95%;
             border-radius: 10px;
             overflow: hidden;
             margin: 100px auto;
             transition: all 0.3s cubic-bezier(0.42, 0.0, 0.58, 1.0);
             padding: 10px;
-            
-        }
-    /* 기존스타일 */
 
-           
-    /* 김혜란 스타일 */
+        }
+
+        /* 기존스타일 */
+
+
+        /* 김혜란 스타일 */
         .Modal {
 
             position: absolute;
@@ -238,12 +244,14 @@
         .registerButton {
             text-align: center;
         }
+
         .msgdiv {
             font-size: 0.8rem;
         }
-    /* 김혜란 스타일 */
 
-    /* 전상국 스타일 */
+        /* 김혜란 스타일 */
+
+        /* 전상국 스타일 */
         .modal {
             position: absolute;
             top: 0;
@@ -311,9 +319,10 @@
         .logoutbtn {
             display: none;
         }
-    /* 전상국 스타일 */
-    /* 김영재 스타일 */
-    .modal {
+
+        /* 전상국 스타일 */
+        /* 김영재 스타일 */
+        .modal {
             position: absolute;
             top: 0;
             left: 0;
@@ -348,16 +357,18 @@
 
             transform: translateX(-50%) translateY(-50%);
         }
+    </style>
 
-    </style> 
-
-<!-- 전상국 ajax스크립트 -->
+    <!-- 전상국 ajax스크립트 -->
     <!-- 로그인 페이지 진입 시 쿠키값이 비어있지 않다면 로그인버튼을 숨기고 로그아웃버튼을 보인다. -->
     <script>
         $(document).ready(function () {
             if (document.cookie !== "") {
                 $('#loginbtn').hide()
+                $('#regBtn').hide()
                 $('#logoutbtn').show()
+                $('#reviewbtn').show()
+                
             }
         })
     </script>
@@ -367,7 +378,7 @@
             // 인풋값을 저장
             let loginid = $('#id-input').val()
             let loginpassword = $('#password-input').val()
-            
+
             $.ajax({
                 type: 'POST',
                 url: 'http://localhost:5500/api/login',
@@ -381,7 +392,9 @@
                         alert('로그인이 완료되었습니다.')
                         if (document.cookie !== "") {
                             $('#loginbtn').hide()
+                            $('#regBtn').hide()
                             $('#logoutbtn').show()
+                            $('#reviewbtn').show()
                             $('#modalres').hide()
                         }
                     } else if (response['loginSuccess'] === false) {
@@ -406,7 +419,9 @@
                     window.location.reload()
                     //로그아웃버튼 숨기고 로그인버튼 출력
                     $('#login').show()
+                    $('#regBtn').show()
                     $('#logout').hide()
+                    $('#reviewbtn').hide()
                 }
             })
         }
@@ -414,43 +429,43 @@
             window.location.reload()
         }
     </script>
-<!-- 전상국 ajax스크립트 -->
+    <!-- 전상국 ajax스크립트 -->
 
-<!-- 김영재 ajax스크립트 -->
-<script>
-          function posting() {
-                let title = $('#title').val()
-                let star = $('#star').val()
-                let content = $('#content').val()
+    <!-- 김영재 ajax스크립트 -->
+    <script>
+        function posting() {
+            let title = $('#title').val()
+            let star = $('#star').val()
+            let content = $('#content').val()
 
-                $.ajax({
-                    type: 'POST',
-                    url: 'http://localhost:5500/api/saveReview',
-                    data: {
-                        title: title,
-                        star: star,
-                        content: content
-                    },
-                    success: function (response) {
+            $.ajax({
+                type: 'POST',
+                url: 'http://localhost:5500/api/saveReview',
+                data: {
+                    title: title,
+                    star: star,
+                    content: content
+                },
+                success: function (response) {
 
-                        console.log(response)
-                        if (response.success === true) {
-                            alert(response['msg'])
-                            window
-                                .location
-                                .reload()
-                        } else if (response.success === false && response.tit === "") {
-                            alert('타이틀을 입력해주세요!')
-                        } else if (response.success === false && response.st === "") {
-                            alert('별점을 선택해주세요!')
-                        } else if (response.success === false && response.cont === "") {
-                            alert('내용을 입력해주세요!')
-                        }
+                    console.log(response)
+                    if (response.success === true) {
+                        alert(response['msg'])
+                        window
+                            .location
+                            .reload()
+                    } else if (response.success === false && response.tit === "") {
+                        alert('타이틀을 입력해주세요!')
+                    } else if (response.success === false && response.st === "") {
+                        alert('별점을 선택해주세요!')
+                    } else if (response.success === false && response.cont === "") {
+                        alert('내용을 입력해주세요!')
                     }
-                });
-            }
-</script>
-<!-- 김영재 ajax스크립트 -->
+                }
+            });
+        }
+    </script>
+    <!-- 김영재 ajax스크립트 -->
 
 
 </head>
@@ -483,7 +498,7 @@
                         check_result="fail" placeholder="아이디를 입력하여 주세요." required>
                     <div id="registerId_div" class="msgdiv"></div>
                 </div>
-              </br>
+                </br>
                 <div class="mb-3">
                     <label class="form-label"> Password ( •̀ ω •́ )+</label>
                     <br />
@@ -493,8 +508,10 @@
                 </div>
 
                 <div style="text-align: center;" class="registerButton">
-                    <button style= "font-family:'NeoDunggeunmo'; display :inline-block;" onclick="signIn()" type="button" class="btn btn-outline-success"> 가입하기 </button>
-                    <button style= "font-family:'NeoDunggeunmo'; display :inline-block;" type="button" id="registerClose" class="btn btn-outline-secondary" data-bs-dismiss="registerModal"> 그만두기 </button>
+                    <button style="font-family:'NeoDunggeunmo'; display :inline-block;" onclick="signIn()" type="button"
+                        class="btn btn-outline-success"> 가입하기 </button>
+                    <button style="font-family:'NeoDunggeunmo'; display :inline-block;" type="button" id="registerClose"
+                        class="btn btn-outline-secondary" data-bs-dismiss="registerModal"> 그만두기 </button>
                 </div>
             </div>
         </div>
@@ -529,8 +546,11 @@
                 </div>
                 <br />
                 <div style="text-align: center;" class="loginButton">
-                    <button style= "font-family:'NeoDunggeunmo'; display :inline-block;" id="login" onclick="log_In()" type="button" class="btn btn-outline-success"> 로그인하기 </button>
-                    <button style= "font-family:'NeoDunggeunmo'; display :inline-block;" id="loginClose" onclick="logcancle()" type="button" class="btn btn-outline-secondary" data-bs-dismiss="loginModal"> 그만두기 </button>
+                    <button style="font-family:'NeoDunggeunmo'; display :inline-block;" id="login" onclick="log_In()"
+                        type="button" class="btn btn-outline-success"> 로그인하기 </button>
+                    <button style="font-family:'NeoDunggeunmo'; display :inline-block;" id="loginClose"
+                        onclick="logcancle()" type="button" class="btn btn-outline-secondary"
+                        data-bs-dismiss="loginModal"> 그만두기 </button>
                 </div>
             </div>
         </div>
@@ -540,84 +560,85 @@
 
     <!-- 김영재 바디 -->
     <div class="reviewModalbox">
-      <div id="modalress" id="reviewmodal" class="modal">
-      <div class="reviewmodal_body">
-          <div class="mb-3">
-              <label  for="formGroupExampleInput" class="form-label">게임이름 ദ്ദിᐢ._.ᐢ₎</label>
-              <br/>
-              <input style="height: 36px;" id="title" type="text" class="form-control" placeholder="게임이름을 작성해주세요!">
-          </div>
-          <div class="mb-7">
-              <label for="formGroupExampleInput" class="form-label">
-                  별점 ๛ก( ’-’* ก)
-                  <select style="width: 280px; height: 38px;" class="form-control" id="star">
-                      <option style="color: gray;" value="" selected="selected">선택하기</option>
-                      <option value="1">⭐</option>
-                      <option value="2">⭐⭐</option>
-                      <option value="3">⭐⭐⭐</option>
-                      <option value="4">⭐⭐⭐⭐</option>
-                      <option value="5">⭐⭐⭐⭐⭐</option>
-                  </select>
-              </div>
-          </label>
-      </br>
-      <div class="mb-3">
-          <label class="form-label">
-              내용 ( •̀ ω •́ )+</label>
-          <br/>
-          <textarea
-              style="height: 240px;"
-              id="content"
-              class="form-control"
-              placeholder="내용을 입력해주세요!"></textarea>
-      </div>
-      <div class="postButton" style="text-align: center ; display :inline-block;">
-          <button
-              onclick="posting()"
-              type="button"
-              style="display :inline-block;"
-              class="btn btn-outline-success">
-              등록
-          </button>
-      </div>
-  </div>
-</div>
-    <!-- 김영재 바디 -->
-    <div class="logbtn">
-        
-        <!-- 전상국 로그인, 아웃 버튼 -->
-        <button style= "font-family:'NeoDunggeunmo';" id="loginbtn" class="login-btn-open-popup">로그인</button>
-        <button style= "font-family:'NeoDunggeunmo';" onclick="log_out()" class="logoutbtn" id="logoutbtn"> 로그아웃 </button>
-        <!-- 전상국 로그인, 아웃 버튼 -->
+        <div id="modalress" id="reviewmodal" class="modal">
+            <div class="reviewmodal_body">
+                <div class="mb-3">
+                    <label for="formGroupExampleInput" class="form-label">게임이름 ദ്ദിᐢ._.ᐢ₎</label>
+                    <br />
+                    <input style="height: 36px;" id="title" type="text" class="form-control"
+                        placeholder="게임이름을 작성해주세요!">
+                </div>
+                <div class="mb-7">
+                    <label for="formGroupExampleInput" class="form-label">
+                        별점 ๛ก( ’-’* ก)
+                        <select style="width: 280px; height: 38px;" class="form-control" id="star">
+                            <option style="color: gray;" value="" selected="selected">선택하기</option>
+                            <option value="1">⭐</option>
+                            <option value="2">⭐⭐</option>
+                            <option value="3">⭐⭐⭐</option>
+                            <option value="4">⭐⭐⭐⭐</option>
+                            <option value="5">⭐⭐⭐⭐⭐</option>
+                        </select>
+                </div>
+                </label>
+                </br>
+                <div class="mb-3">
+                    <label class="form-label">
+                        내용 ( •̀ ω •́ )+</label>
+                    <br />
+                    <textarea style="height: 240px;" id="content" class="form-control"
+                        placeholder="내용을 입력해주세요!"></textarea>
+                </div>
+                <div class="postButton" style="text-align: center ; display :inline-block;">
+                    <button onclick="posting()" type="button" style="display :inline-block;"
+                        class="btn btn-outline-success">
+                        등록
+                    </button>
+                </div>
+            </div>
+        </div>
+        <!-- 김영재 바디 -->
+        <div class="logbtn">
 
-        <!-- 김혜란 회원가입버튼 -->
-        <button style= "font-family:'NeoDunggeunmo';" class="register-btn-open-popup">회원가입</button> 
-        <!-- 김혜란 회원가입버튼 -->
+            <!-- 전상국 로그인, 아웃 버튼 -->
+            <button style="font-family:'NeoDunggeunmo';" id="loginbtn" class="login-btn-open-popup">로그인</button>
+            <button style="font-family:'NeoDunggeunmo';" onclick="log_out()" class="logoutbtn" id="logoutbtn"> 로그아웃
+            </button>
+            <!-- 전상국 로그인, 아웃 버튼 -->
 
-    </div>
+            <!-- 김혜란 회원가입버튼 -->
+            <button style="font-family:'NeoDunggeunmo';" id="regBtn" class="register-btn-open-popup">회원가입</button>
+            <!-- 김혜란 회원가입버튼 -->
 
-
-    <div class="mytitle">
-
-
-        <h1>세상에 나쁜 게임은 없다 </h1>
-        <h1>[세.나.게]</h1>
-
-
-    </div>
-
-    <div class="btn">
-
-        <button style= "font-family:'NeoDunggeunmo'; background-color: gray;" id="reviewbtn" class="review-btn-open-popup" type="button">리뷰하기</button>
-
-    </div>
-
-
-    <div class="mycard">
-        <div class="row row-cols-1 row-cols-md-5 g-5" id="cards-box">
         </div>
 
-    </div>
+
+        <div class="mytitle">
+
+            <br />
+            <h4> 세상에 나쁜 게임은 없다 </h4>
+            <h3>˚⁺ପ(๑・ω・)੭ु⁾⁾ </h3>
+            <br /><br />
+            <h1> 세 . 나 . 게</h1>
+
+
+        </div>
+
+        <div class="btn">
+
+            <button style="font-family:'NeoDunggeunmo';
+            background: linear-gradient(-45deg, #33ccff 0%, #ff99cc 100%);
+            color: white; display: none;
+            " id="reviewbtn" class="review-btn-open-popup" type="button">리뷰하기</button>
+
+        </div>
+
+
+        <div class="mycard">
+            <div class="row row-cols-1 row-cols-md-5 g-5" id="cards-box">
+            </div>
+
+        </div>
 
 </body>
 
@@ -715,7 +736,7 @@
                 console.log(response)
                 if (response['success'] === true) {
                     alert('회원가입이 완료되었습니다.'),
-                    registerModal.classList.toggle('show');
+                        registerModal.classList.toggle('show');
                     window.location.reload()
                 } else {
                     alert(response['msg'])
@@ -879,28 +900,28 @@
     const reviewClose = document.querySelector('#reviewClose')
     // 
     reviewbtnOpenPopup.addEventListener('click', () => {
-      reviewmodal.classList.toggle('show');
+        reviewmodal.classList.toggle('show');
 
         if (reviewmodal.classList.contains('show')) {
-          reviewModalbox.style.overflow = 'hidden';
+            reviewModalbox.style.overflow = 'hidden';
         }
     });
     //
     reviewmodal.addEventListener('click', (event) => {
         if (event.target === reviewmodal) {
-          reviewmodal.classList.toggle('show');
+            reviewmodal.classList.toggle('show');
 
             if (!reviewmodal.classList.contains('show')) {
-              reviewModalbox.style.overflow = 'auto';
+                reviewModalbox.style.overflow = 'auto';
             }
         }
     });
     //
     loginClose.addEventListener("click", (event) => {
         if (event.target === reviewClose) {
-          reviewmodal.classList.toggle('show');
+            reviewmodal.classList.toggle('show');
             if (!reviewmodal.classList.contains('show')) {
-              reviewModalbox.style.overflow = 'auto';
+                reviewModalbox.style.overflow = 'auto';
             }
         }
     });
