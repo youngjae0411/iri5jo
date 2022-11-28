@@ -37,6 +37,7 @@ URl을 통한 게임 사진과 게임의 별점, 내용을 올릴 수 있는 도
 <img width="1676" alt="스크린샷 2022-11-19 오후 9 13 53" src="https://user-images.githubusercontent.com/103705842/202850324-5d010838-976b-4a0b-a6b0-be381b54203b.png">
 
 http://geniuskim.shop.s3-website.ap-northeast-2.amazonaws.com
+ec2비용문제때문에 서버를 끈 관계로 html모습만 확인가능합니다.
 
 
 
